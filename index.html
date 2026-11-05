@@ -76,7 +76,7 @@
             transform: translateY(-2px);
         }
 
-        /* ပုံတွေထည့်မည့် အပိုင်း (Gallery Section) */
+        /* ပုံများထည့်မည့် အပိုင်း (Gallery Section) */
         .gallery-section {
             min-height: 100vh;
             padding: 60px 20px;
@@ -102,29 +102,20 @@
         .photo-box {
             background: rgba(255, 255, 255, 0.25);
             border-radius: 15px;
-            height: 160px;
+            height: 180px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px dashed rgba(255, 255, 255, 0.6);
             overflow: hidden;
-            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .photo-box span {
-            font-size: 13px;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* အမှန်တကယ် ပုံထည့်ချင်ရင် HTML ထဲမှာ img tag သုံးနိုင်ပုံ ဥပမာ -
         .photo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        */
     </style>
 </head>
 <body>
@@ -142,23 +133,21 @@
     <section id="memories" class="gallery-section">
         <h2>Our Memories 🤍</h2>
         <div class="photo-grid">
-            <!-- ပုံနေရာ ၁ -->
+            <!-- ပုံ ၁ -->
             <div class="photo-box">
-                <span>ပုံထည့်ရန် (1)</span>
-                <!-- ဥပမာ ပုံအစစ်ထည့်မည်ဆိုပါက အောက်ပါအတိုင်း ဖြည့်ပါ -->
-                <!-- <img src="your-image-1.jpg" alt="Memory"> -->
+                <img src="IMG_3467.jpeg" alt="Memory 1">
             </div>
-            <!-- ပုံနေရာ ၂ -->
+            <!-- ပုံ ၂ -->
             <div class="photo-box">
-                <span>ပုံထည့်ရန် (2)</span>
+                <img src="IMG_3469.jpeg" alt="Memory 2">
             </div>
-            <!-- ပုံနေရာ ၃ -->
+            <!-- ပုံ ၃ -->
             <div class="photo-box">
-                <span>ပုံထည့်ရန် (3)</span>
+                <img src="IMG_3470.jpeg" alt="Memory 3">
             </div>
-            <!-- ပုံနေရာ ၄ -->
+            <!-- ပုံ ၄ -->
             <div class="photo-box">
-                <span>ပုံထည့်ရန် (4)</span>
+                <img src="IMG_3677.jpeg" alt="Memory 4">
             </div>
         </div>
     </section>
