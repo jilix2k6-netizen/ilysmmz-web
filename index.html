@@ -3,26 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runestone ဖြင့် ရေးသားထားသော ဝဘ်ဆိုဒ်</title>
+    <title>Tya & Mzh Memories</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pyidaungsu', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* ပင်မစာမျက်နှာ (Home Section) */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background-color: #f0f3f4;
-            padding: 40px;
+            padding: 20px;
         }
-        h1 {
-            color: #2c3e50;
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 380px;
+            width: 100%;
         }
-        p {
-            color: #7f8c8d;
+
+        .hero-card h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        .hero-card p {
+            font-size: 15px;
+            color: #f8f9fa;
+            margin-bottom: 25px;
+        }
+
+        /* ဝင်ရန် ခလုတ် */
+        .btn-enter {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ff4757;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-enter:hover {
+            background-color: #ff6b81;
+            transform: translateY(-2px);
+        }
+
+        /* ပုံတွေထည့်မည့် အပိုင်း (Gallery Section) */
+        .gallery-section {
+            min-height: 100vh;
+            padding: 60px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-section h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        /* ပုံများပြမည့် Grid နေရာ */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .photo-box {
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-box span {
+            font-size: 13px;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* အမှန်တကယ် ပုံထည့်ချင်ရင် HTML ထဲမှာ img tag သုံးနိုင်ပုံ ဥပမာ -
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        */
     </style>
 </head>
 <body>
 
-    <h1>မင်္ဂလာပါ Runestone မှ ကြိုဆိုပါတယ်</h1>
-    <p>ဒါက iPhone ပေါ်က Runestone Editor ကိုသုံးပြီး ရေးထားတဲ့ HTML စာမျက်နှာပါ</p>
+    <!-- အပိုင်း ၁ - ပင်မစာမျက်နှာ -->
+    <section class="hero-section">
+        <div class="hero-card">
+            <h1>✨ Tya & Mzh Memories ✨</h1>
+            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
+            <a href="#memories" class="btn-enter">ဝင်ရန်</a>
+        </div>
+    </section>
+
+    <!-- အပိုင်း ၂ - ပုံများပြသရန် နေရာ -->
+    <section id="memories" class="gallery-section">
+        <h2>Our Memories 🤍</h2>
+        <div class="photo-grid">
+            <!-- ပုံနေရာ ၁ -->
+            <div class="photo-box">
+                <span>ပုံထည့်ရန် (1)</span>
+                <!-- ဥပမာ ပုံအစစ်ထည့်မည်ဆိုပါက အောက်ပါအတိုင်း ဖြည့်ပါ -->
+                <!-- <img src="your-image-1.jpg" alt="Memory"> -->
+            </div>
+            <!-- ပုံနေရာ ၂ -->
+            <div class="photo-box">
+                <span>ပုံထည့်ရန် (2)</span>
+            </div>
+            <!-- ပုံနေရာ ၃ -->
+            <div class="photo-box">
+                <span>ပုံထည့်ရန် (3)</span>
+            </div>
+            <!-- ပုံနေရာ ၄ -->
+            <div class="photo-box">
+                <span>ပုံထည့်ရန် (4)</span>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
