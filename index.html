@@ -223,7 +223,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             display: none;
             flex-direction: column;
@@ -237,17 +237,18 @@
         .story-card {
             background: #ffffff;
             border-radius: 25px;
-            padding: 20px;
-            max-width: 380px;
+            padding: 25px 20px;
+            max-width: 400px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             text-align: center;
             color: #333;
+            margin: auto;
         }
 
         .story-card img {
             width: 100%;
-            max-height: 240px;
+            max-height: 220px;
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -256,16 +257,21 @@
         .story-title {
             font-size: 18px;
             color: #ff4757;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: bold;
         }
 
         .story-text {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
+            font-size: 13.5px;
+            color: #444;
+            line-height: 1.8;
             margin-bottom: 20px;
             text-align: justify;
+            white-space: pre-line;
+            background: #fff5f6;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px dashed #ff7eb3;
         }
 
         .btn-close {
@@ -306,7 +312,7 @@
         <h2>Our Memories 💕</h2>
         <div class="photo-grid">
             
-            <!-- ပုံ ၁ (44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png) -->
+            <!-- ပုံ ၁ (MayZin) -->
             <div class="photo-card">
                 <div class="photo-box">
                     <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
@@ -315,7 +321,7 @@
                 <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
             </div>
 
-            <!-- ပုံ ၂ (isay.png) -->
+            <!-- ပုံ ၂ (Thuya) -->
             <div class="photo-card">
                 <div class="photo-box">
                     <img src="isay.png" alt="Thuya Memory">
@@ -327,19 +333,17 @@
         </div>
     </section>
 
-    <!-- 44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <!-- MayZin ရဲ့ အမှတ်တရ စာမျက်နှာ -->
     <div class="story-modal" id="story1">
         <div class="story-card">
             <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
             <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
-            <div class="story-text">
-                ဒီနေရာမှာ MayZin နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
-            </div>
+            <div class="story-text">မောင်ကိုမမချစ်တယ်ဆိုတာ တကယ်ပါ ဘာလို့ချစ်မိလဲတော့မသိဘူး ဒါမယ့်မောင်နဲ့နေရတာပျော်တယ် တခါတလေ စိတ်ညစ်နေရင်တောင်မောင့်အသံလေးကြားတာနဲ့ပြုံးမိတယ် မောင့်ကိုပျော်အောင်လဲ ထားချင်တယ်မမ မအားလို့ ပစ်ထားသလိုဖစ်နေရင်စိတ်မကောက်ပါနဲ့နော်မမက မောင့်ကိုအမြဲ စကားပြောချင်တာပါ တမင်ပစ်ထားတာလဲမဟုတ်ဘူး အက်မို့မောင်က တခါတလေ ကျ နားလည်ပေးပါနော် မောင်အတိတ်မာဘာဘဲ ဖစ်ခဲ့ဖစ်ခဲ့ အခု မမအနားမှာရှိတုန်း အကောင်းဆုံးတွေဘဲမောင့်ကိုပေးချင်တယ် မမကိုမထားခဲ့ပါနဲ့လို့မတောင်းဆိုဘူး ဒါမယ့် မမတို့လက်တွဲနေတဲ့အချိန်အတွင်းမှာတော့ မမ တယောက်ထဲဘဲ ချစ်ပေးပါလို့ တောင်းဆိုပါရစေ မောင့်ကိုနောက်ဆုံးလူအဖစ်ရွေးချယ်ထားတာမို့ မမက မောင့်ကိုဘယ်တော့မှ လက်လွှတ်မာမဟုတ်ဘူးဆိုတာယုံပေးနော်ကလေးလေး အများကြီးချစ်တယ် နောက်နှစ်တွေထိချစ်သွားမယ် အများကြီးချစ်တယ် သူရအောင်🩷</div>
             <button class="btn-close" onclick="closeStory('story1')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
-    <!-- isay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <!-- Thuya ရဲ့ အမှတ်တရ စာမျက်နှာ -->
     <div class="story-modal" id="story2">
         <div class="story-card">
             <img src="isay.png" alt="Thuya Memory">
