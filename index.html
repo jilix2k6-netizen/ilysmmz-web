@@ -166,3 +166,151 @@
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
             border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .photo-box {
+            height: 150px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 8px;
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ဖတ်ရန် ခလုတ်များ */
+        .btn-read {
+            display: inline-block;
+            margin: 4px auto 0;
+            padding: 6px 18px;
+            background-color: #ffffff;
+            color: #ff4757;
+            border: none;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-read:hover {
+            background-color: #fff0f3;
+        }
+
+        /* ပုံတစ်ပုံချင်းစီအတွက် စာဖတ်ရန် Full Page Modal */
+        .story-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .story-card {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 20px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            color: #333;
+        }
+
+        .story-card img {
+            width: 100%;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .story-title {
+            font-size: 18px;
+            color: #ff4757;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .story-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .btn-close {
+            padding: 8px 25px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ပင်မစာမျက်နှာ -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-card">
+            <h1>🌸 Tya & Mzh Memories 🌸</h1>
+            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
+            <button class="btn-enter" onclick="openModal()">ဝင်ရန်</button>
+        </div>
+    </section>
+
+    <!-- Password Modal -->
+    <div class="modal-overlay" id="passModal">
+        <div class="modal-box">
+            <h3>🔑 Passcode ထည့်ပါ</h3>
+            <input type="password" id="passInput" class="password-input" placeholder="Password ရိုက်ပါ">
+            <button class="btn-submit" onclick="checkPassword()">အတည်ပြုမည်</button>
+            <p class="error-msg" id="errorMsg">Password မှားယွင်းနေပါသည်။</p>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="memories" class="gallery-section">
+        <h2>Our Memories 💕</h2>
+        <div class="photo-grid">
+            
+            <!-- ပုံ ၁ (44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png) -->
+            <div class="photo-card">
+                <div class="photo-box">
+                    <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
+                </div>
+                <div class="photo-caption">MayZin 🌸</div>
+                <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
+            </div>
+
+            <!-- ပုံ ၂ (isay.png) -->
+            <div class="photo-card">
+                <div class="photo
