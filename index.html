@@ -12,7 +12,6 @@
             font-family: 'Pyidaungsu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* ပိုမိုက်ပြီး အထာကျတဲ့ အပန်းရောင် Theme (Soft Pink & Rose Gold) */
         body {
             background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
             color: #fff;
@@ -139,7 +138,7 @@
             font-weight: bold;
         }
 
-        /* Gallery Section (ដំបូង ပိတ်ထားမည်) */
+        /* Gallery Section */
         .gallery-section {
             display: none;
             min-height: 100vh;
@@ -194,7 +193,7 @@
             font-weight: 500;
         }
 
-        /* ဖတ်ရန် ခလုတ် */
+        /* ဖတ်ရန် ခလုတ်များ */
         .btn-read {
             display: inline-block;
             margin: 4px auto 0;
@@ -298,95 +297,53 @@
         </div>
     </div>
 
-    <!-- Gallery Section (Password မှန်မှ ပေါ်မည်) -->
+    <!-- Gallery Section -->
     <section id="memories" class="gallery-section">
         <h2>Our Memories 💕</h2>
         <div class="photo-grid">
             
-            <!-- ပုံ ၁ -->
+            <!-- ပုံ ၁ (hesay.png) -->
             <div class="photo-card">
                 <div class="photo-box">
-                    <img src="IMG_3467.jpeg" alt="Memory 1">
+                    <img src="hesay.png" alt="MayZin Memory">
                 </div>
-                <div class="photo-caption">အမှတ်တရ ၁</div>
+                <div class="photo-caption">MayZin 🌸</div>
                 <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
             </div>
 
-            <!-- ပုံ ၂ -->
+            <!-- ပုံ ၂ (isay.png) -->
             <div class="photo-card">
                 <div class="photo-box">
-                    <img src="IMG_3469.jpeg" alt="Memory 2">
+                    <img src="isay.png" alt="Thuya Memory">
                 </div>
-                <div class="photo-caption">အမှတ်တရ ၂</div>
+                <div class="photo-caption">Thuya 🌿</div>
                 <button class="btn-read" onclick="openStory('story2')">ဖတ်ရန် 📖</button>
-            </div>
-
-            <!-- ပုံ ၃ -->
-            <div class="photo-card">
-                <div class="photo-box">
-                    <img src="IMG_3470.jpeg" alt="Memory 3">
-                </div>
-                <div class="photo-caption">အမှတ်တရ ၃</div>
-                <button class="btn-read" onclick="openStory('story3')">ဖတ်ရန် 📖</button>
-            </div>
-
-            <!-- ပုံ ၄ -->
-            <div class="photo-card">
-                <div class="photo-box">
-                    <img src="IMG_3677.jpeg" alt="Memory 4">
-                </div>
-                <div class="photo-caption">အမှတ်တရ ၄</div>
-                <button class="btn-read" onclick="openStory('story4')">ဖတ်ရန် 📖</button>
             </div>
 
         </div>
     </section>
 
-    <!-- ပုံ ၁ အတွက် စာမျက်နှာ -->
+    <!-- hesay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
     <div class="story-modal" id="story1">
         <div class="story-card">
-            <img src="IMG_3467.jpeg" alt="Memory 1">
-            <div class="story-title">🌸 ပထမဆုံး အမှတ်တရလေး</div>
+            <img src="hesay.png" alt="MayZin Memory">
+            <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
             <div class="story-text">
-                ဒီနေရာမှာ ပုံ ၁ နဲ့ ပတ်သက်တဲ့ အမှတ်တရ စာလွှာလေးတွေ၊ ခံစားချက်လေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
+                ဒီနေရာမှာ hesay.png ပုံနဲ့ပတ်သက်ပြီး MayZin ရဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
             </div>
             <button class="btn-close" onclick="closeStory('story1')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
-    <!-- ပုံ ၂ အတွက် စာမျက်နှာ -->
+    <!-- isay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
     <div class="story-modal" id="story2">
         <div class="story-card">
-            <img src="IMG_3469.jpeg" alt="Memory 2">
-            <div class="story-title">🌸 ဒုတိယမြောက် အမှတ်တရလေး</div>
+            <img src="isay.png" alt="Thuya Memory">
+            <div class="story-title">🌿 Thuya ရဲ့ အမှတ်တရ စာလွှာ</div>
             <div class="story-text">
-                ဒီနေရာမှာ ပုံ ၂ နဲ့ ပတ်သက်တဲ့ အမှတ်တရ စာလွှာလေးတွေကို ရေးသားနိုင်ပါတယ်။
+                ဒီနေရာမှာ isay.png ပုံနဲ့ပတ်သက်ပြီး Thuya ရဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
             </div>
             <button class="btn-close" onclick="closeStory('story2')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
-    <!-- ပုံ ၃ အတွက် စာမျက်နှာ -->
-    <div class="story-modal" id="story3">
-        <div class="story-card">
-            <img src="IMG_3470.jpeg" alt="Memory 3">
-            <div class="story-title">🌸 တတိယမြောက် အမှတ်တရလေး</div>
-            <div class="story-text">
-                ဒီနေရာမှာ ပုံ ၃ နဲ့ ပတ်သက်တဲ့ အမှတ်တရ စာလွှာလေးတွေကို ရေးသားနိုင်ပါတယ်။
-            </div>
-            <button class="btn-close" onclick="closeStory('story3')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
-    <!-- ပုံ ၄ အတွက် စာမျက်နှာ -->
-    <div class="story-modal" id="story4">
-        <div class="story-card">
-            <img src="IMG_3677.jpeg" alt="Memory 4">
-            <div class="story-title">🌸 စတုတ္ထမြောက် အမှတ်တရလေး</div>
-            <div class="story-text">
-                ဒီနေရာမှာ ပုံ ၄ နဲ့ ပတ်သက်တဲ့ အမှတ်တရ စာလွှာလေးတွေကို ရေးသားနိုင်ပါတယ်။
-            </div>
-            <button class="btn-close" onclick="closeStory('story4')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
