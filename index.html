@@ -26,6 +26,8 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .hero-card {
@@ -67,6 +69,8 @@
             font-size: 16px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             cursor: pointer;
+            position: relative;
+            z-index: 20;
             transition: all 0.3s ease;
         }
 
@@ -87,7 +91,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 3000;
         }
 
         .modal-box {
@@ -226,7 +230,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            z-index: 2000;
+            z-index: 4000;
             overflow-y: auto;
         }
 
@@ -313,4 +317,90 @@
 
             <!-- ပုံ ၂ (isay.png) -->
             <div class="photo-card">
-                <div class="photo
+                <div class="photo-box">
+                    <img src="isay.png" alt="Thuya Memory">
+                </div>
+                <div class="photo-caption">Thuya 🌿</div>
+                <button class="btn-read" onclick="openStory('story2')">ဖတ်ရန် 📖</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <div class="story-modal" id="story1">
+        <div class="story-card">
+            <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
+            <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
+            <div class="story-text">
+                ဒီနေရာမှာ MayZin နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
+            </div>
+            <button class="btn-close" onclick="closeStory('story1')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- isay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <div class="story-modal" id="story2">
+        <div class="story-card">
+            <img src="isay.png" alt="Thuya Memory">
+            <div class="story-title">🌿 Thuya ရဲ့ အမှတ်တရ စာလွှာ</div>
+            <div class="story-text">
+                ဒီနေရာမှာ Thuya နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
+            </div>
+            <button class="btn-close" onclick="closeStory('story2')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = "2684";
+
+        function openModal() {
+            const modal = document.getElementById('passModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+            const errorMsg = document.getElementById('errorMsg');
+            if (errorMsg) {
+                errorMsg.style.display = 'none';
+            }
+            const passInput = document.getElementById('passInput');
+            if (passInput) {
+                passInput.value = '';
+            }
+        }
+
+        function checkPassword() {
+            const passInput = document.getElementById('passInput');
+            if (!passInput) return;
+            const userPass = passInput.value;
+            
+            if (userPass === correctPassword) {
+                const passModal = document.getElementById('passModal');
+                if (passModal) passModal.style.display = 'none';
+                
+                const heroSection = document.getElementById('heroSection');
+                if (heroSection) heroSection.style.display = 'none';
+                
+                const memories = document.getElementById('memories');
+                if (memories) memories.style.display = 'block';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const errorMsg = document.getElementById('errorMsg');
+                if (errorMsg) errorMsg.style.display = 'block';
+            }
+        }
+
+        function openStory(id) {
+            const storyModal = document.getElementById(id);
+            if (storyModal) storyModal.style.display = 'flex';
+        }
+
+        function closeStory(id) {
+            const storyModal = document.getElementById(id);
+            if (storyModal) storyModal.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
