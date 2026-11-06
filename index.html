@@ -63,17 +63,79 @@
             padding: 12px 30px;
             background-color: #ff4757;
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 30px;
             font-weight: bold;
             font-size: 16px;
             box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            cursor: pointer;
             transition: 0.3s;
         }
 
         .btn-enter:hover {
             background-color: #ff6b81;
             transform: translateY(-2px);
+        }
+
+        /* Password တောင်းသည့် Pop-up Box */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-align: center;
+            width: 85%;
+            max-width: 320px;
+            color: #333;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .modal-box h3 {
+            margin-bottom: 15px;
+            color: #ff4757;
+            font-size: 18px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ff4757;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .btn-submit {
+            padding: 10px 25px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .error-msg {
+            color: #ff4757;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
         }
 
         /* ပုံများထည့်မည့် အပိုင်း (Gallery Section) */
@@ -90,67 +152,14 @@
             color: #fff;
         }
 
-        /* ပုံများပြမည့် Grid နေရာ */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 20px;
             max-width: 500px;
             margin: 0 auto;
         }
 
-        .photo-box {
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 15px;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- အပိုင်း ၁ - ပင်မစာမျက်နှာ -->
-    <section class="hero-section">
-        <div class="hero-card">
-            <h1>✨ Tya & Mzh Memories ✨</h1>
-            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
-            <a href="#memories" class="btn-enter">ဝင်ရန်</a>
-        </div>
-    </section>
-
-    <!-- အပိုင်း ၂ - ပုံများပြသရန် နေရာ -->
-    <section id="memories" class="gallery-section">
-        <h2>Our Memories 🤍</h2>
-        <div class="photo-grid">
-            <!-- ပုံ ၁ -->
-            <div class="photo-box">
-                <img src="IMG_3467.jpeg" alt="Memory 1">
-            </div>
-            <!-- ပုံ ၂ -->
-            <div class="photo-box">
-                <img src="IMG_3469.jpeg" alt="Memory 2">
-            </div>
-            <!-- ပုံ ၃ -->
-            <div class="photo-box">
-                <img src="IMG_3470.jpeg" alt="Memory 3">
-            </div>
-            <!-- ပုံ ၄ -->
-            <div class="photo-box">
-                <img src="IMG_3677.jpeg" alt="Memory 4">
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+        .photo-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter:
