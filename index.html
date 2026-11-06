@@ -26,8 +26,6 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            position: relative;
-            z-index: 10;
         }
 
         .hero-card {
@@ -69,8 +67,6 @@
             font-size: 16px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            position: relative;
-            z-index: 20;
             transition: all 0.3s ease;
         }
 
@@ -91,7 +87,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 3000;
+            z-index: 1000;
         }
 
         .modal-box {
@@ -230,7 +226,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            z-index: 4000;
+            z-index: 2000;
             overflow-y: auto;
         }
 
@@ -318,4 +314,24 @@
                     <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
                 </div>
                 <div class="photo-caption">MayZin 🌸</div>
-                <button class="btn-
+                <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
+            </div>
+
+            <!-- ပုံ ၂ (Thuya) -->
+            <div class="photo-card">
+                <div class="photo-box">
+                    <img src="isay.png" alt="Thuya Memory">
+                </div>
+                <div class="photo-caption">Thuya 🌿</div>
+                <button class="btn-read" onclick="openStory('story2')">ဖတ်ရန် 📖</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MayZin ရဲ့ အမှတ်တရ စာမျက်နှာ -->
+    <div class="story-modal" id="story1">
+        <div class="story-card">
+            <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
+            <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
+            <div class="story-text">မောင်ကိုမမချစ်တယ်ဆိုတာ တကယ်ပါ ဘာလို့ချစ်မိလဲတော့မသိဘူး ဒါမယ့်မောင်နဲ့နေရတာပျော်တယ် တခါတလေ စိတ်ညစ်နေရင်တောင်မောင့်အသံလေးကြားတာနဲ့ပြုံးမိတယ် မောင့်ကိုပျော်အောင်လဲ ထားချင်တယ်မမ မအားလို့ ပစ်ထားသလိုဖစ်နေရင်စိတ်မကောက်ပါနဲ့နော်မမက မောင့်ကိုအ
