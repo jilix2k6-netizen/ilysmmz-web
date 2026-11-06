@@ -12,10 +12,6 @@
             font-family: 'Pyidaungsu', Arial, sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
             color: #333333;
@@ -24,7 +20,7 @@
 
         /* ပင်မစာမျက်နှာ (Home Section) */
         .hero-section {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -135,8 +131,9 @@
             font-weight: bold;
         }
 
-        /* Gallery Section */
+        /* Gallery Section (ដំបូង ပိတ်ထားမည်) */
         .gallery-section {
+            display: none;
             min-height: 100vh;
             padding: 60px 20px;
             text-align: center;
@@ -190,7 +187,7 @@
 <body>
 
     <!-- ပင်မစာမျက်နှာ -->
-    <section class="hero-section">
+    <section class="hero-section" id="heroSection">
         <div class="hero-card">
             <h1>✨ Tya & Mzh Memories ✨</h1>
             <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
@@ -208,7 +205,7 @@
         </div>
     </div>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section (Password မှန်မှ ပေါ်မည်) -->
     <section id="memories" class="gallery-section">
         <h2>Our Memories 🤍</h2>
         <div class="photo-grid">
@@ -265,7 +262,9 @@
             const userPass = document.getElementById('passInput').value;
             if (userPass === correctPassword) {
                 document.getElementById('passModal').style.display = 'none';
-                document.getElementById('memories').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('heroSection').style.display = 'none'; // ပင်မစာမျက်နှာကို ဖျောက်မည်
+                document.getElementById('memories').style.display = 'block'; // Gallery ကို ပေါ်လာစေမည်
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 document.getElementById('errorMsg').style.display = 'block';
             }
