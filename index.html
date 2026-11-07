@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tya & Mzh Memories</title>
+    <title>Tya & Mzh Memories - E-Postcard</title>
     <style>
         * {
             box-sizing: border-box;
@@ -138,18 +138,18 @@
             font-weight: bold;
         }
 
-        /* Gallery Section */
+        /* Gallery / E-Postcard Section */
         .gallery-section {
             display: none;
             min-height: 100vh;
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
             background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
         }
 
         .gallery-section h2 {
-            font-size: 26px;
-            margin-bottom: 25px;
+            font-size: 24px;
+            margin-bottom: 20px;
             color: #fff;
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
@@ -157,7 +157,7 @@
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
+            gap: 15px;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -175,7 +175,7 @@
         }
 
         .photo-box {
-            height: 150px;
+            height: 140px;
             width: 100%;
             overflow: hidden;
         }
@@ -193,11 +193,10 @@
             font-weight: 500;
         }
 
-        /* ဖတ်ရန် ခလုတ်များ */
         .btn-read {
             display: inline-block;
             margin: 4px auto 0;
-            padding: 6px 18px;
+            padding: 6px 16px;
             background-color: #ffffff;
             color: #ff4757;
             border: none;
@@ -212,7 +211,7 @@
             background-color: #fff0f3;
         }
 
-        /* ပုံတစ်ပုံချင်းစီအတွက် စာဖတ်ရန် Full Page Modal */
+        /* E-Postcard & Interactive Modal Styles */
         .story-modal {
             position: fixed;
             top: 0;
@@ -226,7 +225,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            z-index: 2000;
+            z-index: 4000;
             overflow-y: auto;
         }
 
@@ -244,7 +243,7 @@
 
         .story-card img {
             width: 100%;
-            max-height: 220px;
+            max-height: 200px;
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -258,16 +257,18 @@
         }
 
         .story-text {
-            font-size: 13.5px;
+            font-size: 13px;
             color: #444;
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 20px;
             text-align: justify;
             white-space: pre-line;
             background: #fff5f6;
-            padding: 15px;
+            padding: 12px;
             border-radius: 15px;
             border: 1px dashed #ff7eb3;
+            max-height: 220px;
+            overflow-y: auto;
         }
 
         .btn-close {
@@ -279,6 +280,60 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        /* အထာကျတဲ့ E-Postcard Envelope ပုံစံ */
+        .postcard-container {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 30px 20px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            color: #333;
+            position: relative;
+        }
+
+        .envelope-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .choice-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .btn-choice-yes {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-choice-no {
+            padding: 10px 25px;
+            background-color: #e0e0e0;
+            color: #555;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
     </style>
 </head>
@@ -303,7 +358,21 @@
         </div>
     </div>
 
-    <!-- Gallery Section -->
+    <!-- E-Postcard စာအိတ်ဖွင့်ရန် Interactive Section -->
+    <div class="modal-overlay" id="postcardModal" style="display: flex;">
+        <div class="postcard-container" id="postcardBox">
+            <div class="envelope-icon">💌</div>
+            <h3 style="color: #ff4757; margin-bottom: 10px; font-size: 20px;">မောင်တောင်းပန်ပါတယ်</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 15px;">စိတ်ဆိုးပြေပါတော့နော်ကလေးလေးရာ... 💕</p>
+            
+            <div class="choice-container" id="choiceArea">
+                <button id="yesBtn" class="btn-choice-yes" onclick="acceptForgiveness()" style="padding: 12px 30px; font-size: 16px;">စိတ်ဆိုးပြေမယ် 💖</button>
+                <button id="noBtn" class="btn-choice-no" onclick="rejectForgiveness()">စိတ်ဆိုးမပြေဘူး 😒</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section (စာအိတ်ဖွင့်ပြီးမှ ပေါ်မည်) -->
     <section id="memories" class="gallery-section">
         <h2>Our Memories 💕</h2>
         <div class="photo-grid">
@@ -353,6 +422,7 @@
 
     <script>
         const correctPassword = "2684";
+        let noClickCount = 0;
 
         function openModal() {
             document.getElementById('passModal').style.display = 'flex';
@@ -364,12 +434,47 @@
             const userPass = document.getElementById('passInput').value;
             if (userPass === correctPassword) {
                 document.getElementById('passModal').style.display = 'none';
-                document.getElementById('heroSection').style.display = 'none';
-                document.getElementById('memories').style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Password မှန်မှ E-Postcard စာအိတ် ပေါ်လာမည်
+                document.getElementById('postcardModal').style.display = 'flex';
             } else {
                 document.getElementById('errorMsg').style.display = 'block';
             }
+        }
+
+        // စိတ်ဆိုးမပြေဘူး ကို နှိပ်တဲ့အခါ Yes ခလုတ် ကြီးလာပြီး No ခလုတ် ငယ်သွားရန်
+        function rejectForgiveness() {
+            noClickCount++;
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+
+            // Yes ခလုတ်ကို ပိုကြီးစေရန်
+            let currentSize = 16 + (noClickCount * 6);
+            let currentPadding = 12 + (noClickCount * 4);
+            yesBtn.style.fontSize = currentSize + 'px';
+            yesBtn.style.padding = currentPadding + 'px ' + (currentPadding * 2) + 'px';
+
+            // No ခလုတ်ကို ငယ်သွားစေရန်
+            if (noClickCount === 1) {
+                noBtn.innerText = "သေချာစဉ်းစားနော် 🥺";
+                noBtn.style.fontSize = "13px";
+            } else if (noClickCount === 2) {
+                noBtn.innerText = "မစနဲ့တော့နော် 😭";
+                noBtn.style.fontSize = "11px";
+            } else if (noClickCount === 3) {
+                noBtn.innerText = "နှိပ်လို့မရတော့ဘူးနော် 😜";
+                noBtn.style.fontSize = "9px";
+            } else {
+                // နောက်ဆုံးတွင် No ခလုတ် လုံးဝ ပျောက်သွားမည်
+                noBtn.style.display = 'none';
+            }
+        }
+
+        // စိတ်ဆိုးပြေမယ် ကို နှိပ်လိုက်ရင် E-Postcard ပိတ်ပြီး ပင်မ Gallery ပေါ်လာမည်
+        function acceptForgiveness() {
+            document.getElementById('postcardModal').style.display = 'none';
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('memories').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function openStory(id) {
