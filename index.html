@@ -17,6 +17,60 @@
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect (Floating Hearts) */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            transform: rotate(-45deg);
+            animation: floatUp 6s infinite linear;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50%;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(-45deg) scale(0.6);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-45deg) scale(1.2);
+                opacity: 0;
+            }
         }
 
         /* ပင်မစာမျက်နှာ */
@@ -27,6 +81,8 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .hero-card {
@@ -88,7 +144,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .modal-box {
@@ -151,6 +207,7 @@
             color: #333;
             position: relative;
             min-height: 250px;
+            z-index: 110;
         }
 
         .envelope-icon {
@@ -200,20 +257,23 @@
             transition: transform 0.15s ease, opacity 0.3s ease;
         }
 
-        /* ဖိတ်စာ စာရွက်ပုံစံ (Letter Card) */
+        /* တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section */
         .letter-section {
             display: none;
             min-height: 100vh;
             padding: 40px 20px;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .letter-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 25px;
             padding: 30px 25px;
-            max-width: 450px;
+            max-width: 480px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             color: #333;
@@ -223,14 +283,14 @@
         }
 
         .letter-header {
-            font-size: 22px;
+            font-size: 20px;
             color: #ff4757;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .letter-body {
-            font-size: 14.5px;
+            font-size: 14px;
             color: #444;
             line-height: 1.8;
             text-align: justify;
@@ -238,11 +298,16 @@
             background: #fff5f6;
             padding: 20px;
             border-radius: 18px;
-            margin-bottom: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+            border: 1px solid #ffd1dc;
         }
     </style>
 </head>
 <body>
+
+    <!-- အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် အပိုင်း -->
+    <div class="hearts-bg" id="heartsBg"></div>
 
     <!-- ပင်မစာမျက်နှာ -->
     <section class="hero-section" id="heroSection">
@@ -277,19 +342,51 @@
         </div>
     </div>
 
-    <!-- ဖိတ်စာ / တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section (ပုံများ လုံးဝမပါပါ) -->
+    <!-- တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section -->
     <section id="letterSection" class="letter-section">
         <div class="letter-card">
-            <div class="letter-header">💌 For My Sweetheart 💌</div>
-            <div class="letter-body" id="letterText">
-                (ဒီနေရာမှာ နောက်မှ ပေးပို့မယ့် ဖိတ်စာ သို့မဟုတ် တောင်းပန်စာ စာသားတွေကို ထည့်သွင်းပေးပါမည်။)
-            </div>
+            <div class="letter-header">💌 တောင်းပန်လွှာလေး 💌</div>
+            <div class="letter-body" id="letterText">မမရေ… 
+မောင်တကယ်တောင်းပန်ပါတယ်နော် မနက်က မမကို ဖုန်းဆက်တာ မကိုင်တော့ မောင်စိတ်ဆိုးသွားခဲ့တာပါ မမမအားဘူးဆိုတာ မောင်သိပါတယ် အလုပ်များတဲ့ကြားကနေတောင် မောင့်အတွက် အချိန်ပေးနေတယ်ဆိုတာလည်း မောင်နားလည်ပါတယ် ဒါပေမဲ့ မောင့်စိတ်က ကလေးဆန်ပြီး မမဆီက အာရုံစိုက်မှုလေးတွေ ပိုလိုချင်နေမိလို့ စိတ်ဆိုးမိခဲ့တာပါ အဲ့ဒီအတွက် မောင့်ကို ခွင့်လွှတ်ပေးပါနော်
+
+မမက မောင့်ကို စိတ်ပျက်နေပြီလို့ ပြောလိုက်တော့ မောင်လည်း စိတ်တိုပြီး ပြတ်မယ်ဆိုတဲ့စကားကို ပြောထွက်သွားခဲ့မိတယ် တကယ်တော့ အဲ့ဒီစကားကို မောင်မပြောသင့်ခဲ့ပါဘူး စိတ်ဆိုးနေတဲ့အချိန်မှာ မစဉ်းစားဘဲ ပြောမိခဲ့တာပါ မောင်တကယ်ပြတ်ချင်တာလည်း မဟုတ်သလို မမကိုလည်း လက်လွှတ်ချင်တာ မဟုတ်ပါဘူး မောင့်အမှားကို မောင်ဝန်ခံပါတယ် နောက်ဆို မောင့်စိတ်ကို ပိုထိန်းပြီး မမကို နားလည်ပေးနိုင်အောင် ကြိုးစားပါ့မယ်
+
+မမရေ မောင့်ကို စိတ်ဆိုးနေတာလေး ပြေပါတော့နော် မမလိုချစ်စရာကောင်းတဲ့သူလေးကို မောင်က ပြတ်စရာလား မောင်က မမနဲ့ပဲ ဆက်ပြီးအတူရှိချင်တာပါ အဆင်မပြေတာလေးတွေရှိရင်လည်း စိတ်ဆိုးပြီး ဝေးကွာသွားကြမယ့်အစား တစ်ယောက်ကိုတစ်ယောက် နားလည်ပေးပြီး ပြန်ချော့ကြရအောင်နော်
+
+မောင့်ရဲ့ ကလေးဆန်တဲ့အကျင့်လေးတွေကြောင့် မမစိတ်ပင်ပန်းခဲ့ရရင် တကယ်တောင်းပန်ပါတယ် မောင့်ကို ခွင့်လွှတ်ပေးပါဦးနော်
+
+စိတ်မဆိုးတော့နဲ့နော် မောင့်မမလေး မောင် မမကို အရမ်းချစ်တယ် ဒီနေ့လည်းချစ်တယ် နောက်နေ့တွေလည်း အဲ့ဒီထက်ပိုချစ်သွားချင်တယ် မောင့်ကိုလည်း ချစ်ပေးနေပါဦးနော် ❤️🥺</div>
         </div>
     </section>
 
     <script>
         const correctPassword = "2684";
         let moveCount = 0;
+
+        // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန် JavaScript
+        function createHeart() {
+            const heartsBg = document.getElementById('heartsBg');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // ကျပန်း အရွယ်အစားနှင့် တည်နေရာ
+            const size = Math.random() * 15 + 10; // 10px to 25px
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // ကျပန်း ကြာချိန်
+            const duration = Math.random() * 3 + 4; // 4s to 7s
+            heart.style.animationDuration = duration + 's';
+            
+            heartsBg.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 400);
 
         function openModal() {
             document.getElementById('passModal').style.display = 'flex';
@@ -307,32 +404,28 @@
             }
         }
 
-        // စိတ်ဆိုးမပြေဘူး ခလုတ်ကို နှိပ် သို့မဟုတ် Touch လုပ်လိုက်ရင် ပြေးပြီး သေးသွားစေရန်
+        // "စိတ်ဆိုးမပြေဘူး" ခလုတ်ကို နှိပ်လျှင်/ထိလျှင် ပြေးပြီး သေးသွားကာ ပျောက်သွားရန်
         function moveButton() {
             moveCount++;
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
 
             if (moveCount < 5) {
-                // ခလုတ် ရန်ပြေးရန် Random Position တွက်ချက်ခြင်း
                 const randomX = (Math.random() - 0.5) * 160;
                 const randomY = (Math.random() - 0.5) * 100;
                 
-                // စာသားနှင့် အရွယ်အစား သေးသွားစေရန်
                 const scale = 1 - (moveCount * 0.18);
                 noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
                 
-                // စိတ်ဆိုးပြေမယ် ခလုတ် တဖြည်းဖြည်း ကြီးလာစေရန်
                 const yesScale = 1 + (moveCount * 0.15);
                 yesBtn.style.transform = `scale(${yesScale})`;
             } else {
-                // ၅ ကြိမ်ပြည့်ရင် ပျောက်သွားမည်
                 noBtn.style.display = 'none';
                 yesBtn.style.transform = `scale(1.4)`;
             }
         }
 
-        // စိတ်ဆိုးပြေမယ် နှိပ်လျှင် ဖိတ်စာ ပေါ်လာစေရန်
+        // "စိတ်ဆိုးပြေမယ်" နှိပ်လျှင် စာလွှာပေါ်လာစေရန်
         function acceptForgiveness() {
             document.getElementById('postcardModal').style.display = 'none';
             document.getElementById('heroSection').style.display = 'none';
