@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tya & Mzh Memories</title>
+    <title>For My Sweetheart 💕</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,11 +13,22 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #a8edf7 0%, #5ac8fa 50%, #ff9a9e 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 8s ease infinite;
+            color: #333;
             min-height: 100vh;
             overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect (Floating Hearts) */
@@ -28,14 +39,14 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 1;
             pointer-events: none;
+            z-index: 1;
         }
 
         .heart {
             position: absolute;
             bottom: -20px;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             display: inline-block;
             transform: rotate(-45deg);
             animation: floatUp 6s infinite linear;
@@ -73,152 +84,44 @@
             }
         }
 
-        /* ပင်မစာမျက်နှာ */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* ပထမဆုံး ပေါ်လာမည့် Interactive Question Card */
+        .postcard-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px 25px;
+            max-width: 360px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             text-align: center;
-            padding: 20px;
             position: relative;
             z-index: 10;
         }
 
-        .hero-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 45px 30px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            max-width: 380px;
-            width: 100%;
-        }
-
-        .hero-card h1 {
-            font-size: 26px;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-            font-weight: bold;
-        }
-
-        .hero-card p {
-            font-size: 15px;
-            color: #fff5f6;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* ဝင်ရန် ခလုတ် */
-        .btn-enter {
-            display: inline-block;
-            padding: 12px 35px;
-            background-color: #ffffff;
-            color: #ff4757;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-enter:hover {
-            background-color: #fff0f3;
-            transform: translateY(-2px);
-        }
-
-        /* Password Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .modal-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px 25px;
-            border-radius: 25px;
-            text-align: center;
-            width: 85%;
-            max-width: 320px;
-            color: #333;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-        }
-
-        .modal-box h3 {
-            margin-bottom: 15px;
-            color: #ff4757;
-            font-size: 18px;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #ff7eb3;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 16px;
-            outline: none;
-            color: #333;
-        }
-
-        .btn-submit {
-            padding: 10px 25px;
-            background-color: #ff4757;
+        .step-badge {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: white;
-            border: none;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .error-msg {
-            color: #ff4757;
             font-size: 13px;
-            margin-top: 10px;
-            display: none;
+            display: inline-block;
+            margin-bottom: 15px;
             font-weight: bold;
         }
 
-        /* E-Postcard စာအိတ် Container */
-        .postcard-container {
-            background: #ffffff;
-            border-radius: 25px;
-            padding: 35px 25px;
-            max-width: 380px;
-            width: 90%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            text-align: center;
-            color: #333;
-            position: relative;
-            min-height: 250px;
-            z-index: 110;
+        .cute-img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            display: block;
         }
 
-        .envelope-icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-            animation: bounce 1.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .question-text {
+            font-size: 18px;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 25px;
         }
 
         .choice-container {
@@ -226,32 +129,31 @@
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin-top: 25px;
             position: relative;
-            min-height: 80px;
+            min-height: 60px;
         }
 
-        .btn-choice-yes {
-            background-color: #ff4757;
+        .btn-yes {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
             color: white;
             border: none;
             border-radius: 25px;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
-            padding: 12px 28px;
+            padding: 12px 30px;
             font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .btn-choice-no {
-            padding: 10px 22px;
-            background-color: #e0e0e0;
+        .btn-no {
+            background: linear-gradient(135deg, #8e9eab, #eef2f3);
             color: #555;
             border: none;
             border-radius: 25px;
-            font-size: 14px;
             font-weight: bold;
+            padding: 12px 25px;
+            font-size: 15px;
             cursor: pointer;
             position: relative;
             transition: transform 0.15s ease, opacity 0.3s ease;
@@ -260,8 +162,8 @@
         /* တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section */
         .letter-section {
             display: none;
-            min-height: 100vh;
-            padding: 40px 20px;
+            width: 100%;
+            padding: 20px;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -272,14 +174,13 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 25px;
-            padding: 30px 25px;
-            max-width: 480px;
+            padding: 30px 20px;
+            max-width: 450px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             color: #333;
             text-align: center;
             border: 2px dashed #ff7eb3;
-            margin: auto;
         }
 
         .letter-header {
@@ -298,7 +199,7 @@
             background: #fff5f6;
             padding: 20px;
             border-radius: 18px;
-            max-height: 60vh;
+            max-height: 65vh;
             overflow-y: auto;
             border: 1px solid #ffd1dc;
         }
@@ -309,44 +210,25 @@
     <!-- အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် အပိုင်း -->
     <div class="hearts-bg" id="heartsBg"></div>
 
-    <!-- ပင်မစာမျက်နှာ -->
-    <section class="hero-section" id="heroSection">
-        <div class="hero-card">
-            <h1>🌸 Tya & Mzh Memories 🌸</h1>
-            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
-            <button class="btn-enter" onclick="openModal()">ဝင်ရန်</button>
-        </div>
-    </section>
-
-    <!-- Password Modal -->
-    <div class="modal-overlay" id="passModal">
-        <div class="modal-box">
-            <h3>🔑 Passcode ထည့်ပါ</h3>
-            <input type="password" id="passInput" class="password-input" placeholder="Password ရိုက်ပါ">
-            <button class="btn-submit" onclick="checkPassword()">အတည်ပြုမည်</button>
-            <p class="error-msg" id="errorMsg">Password မှားယွင်းနေပါသည်။</p>
+    <!-- ပထမဆုံး ပေါ်လာမည့် Interactive Question Card -->
+    <div class="postcard-container" id="questionCard">
+        <div class="step-badge">အဆင့် (၁ / ၃) ✨</div>
+        <!-- ပန်ဒါဝက်ဝံ စတစ်ကာ အရုပ်လေး -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlNXBhZXE5NDBvZTF3dHZrdnhnZXliZXU5dWUydnVzMTgwYm81dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Panda" class="cute-img">
+        
+        <div class="question-text">ပြန်ချစ်ပါလား အကိုရယ်.. 🥺</div>
+        
+        <div class="choice-container">
+            <button id="yesBtn" class="btn-yes" onclick="acceptForgiveness()">YES 💖</button>
+            <button id="noBtn" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">NO 💔</button>
         </div>
     </div>
 
-    <!-- E-Postcard ရွေးချယ်မှု စာအိတ် Box -->
-    <div class="modal-overlay" id="postcardModal">
-        <div class="postcard-container" id="postcardBox">
-            <div class="envelope-icon">💌</div>
-            <h3 style="color: #ff4757; margin-bottom: 10px; font-size: 20px;">မောင်တောင်းပန်ပါတယ်</h3>
-            <p style="color: #666; font-size: 14px;">စိတ်ဆိုးပြေပါတော့နော်ကလေးလေးရာ... 💕</p>
-            
-            <div class="choice-container" id="choiceArea">
-                <button id="yesBtn" class="btn-choice-yes" onclick="acceptForgiveness()">စိတ်ဆိုးပြေမယ် 💖</button>
-                <button id="noBtn" class="btn-choice-no" onmouseover="moveButton()" onclick="moveButton()">စိတ်ဆိုးမပြေဘူး 😒</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section -->
+    <!-- YES နှိပ်လိုက်ရင် ပေါ်လာမည့် တောင်းပန်စာ Section -->
     <section id="letterSection" class="letter-section">
         <div class="letter-card">
             <div class="letter-header">💌 တောင်းပန်လွှာလေး 💌</div>
-            <div class="letter-body" id="letterText">မမရေ… 
+            <div class="letter-body">မမရေ… 
 မောင်တကယ်တောင်းပန်ပါတယ်နော် မနက်က မမကို ဖုန်းဆက်တာ မကိုင်တော့ မောင်စိတ်ဆိုးသွားခဲ့တာပါ မမမအားဘူးဆိုတာ မောင်သိပါတယ် အလုပ်များတဲ့ကြားကနေတောင် မောင့်အတွက် အချိန်ပေးနေတယ်ဆိုတာလည်း မောင်နားလည်ပါတယ် ဒါပေမဲ့ မောင့်စိတ်က ကလေးဆန်ပြီး မမဆီက အာရုံစိုက်မှုလေးတွေ ပိုလိုချင်နေမိလို့ စိတ်ဆိုးမိခဲ့တာပါ အဲ့ဒီအတွက် မောင့်ကို ခွင့်လွှတ်ပေးပါနော်
 
 မမက မောင့်ကို စိတ်ပျက်နေပြီလို့ ပြောလိုက်တော့ မောင်လည်း စိတ်တိုပြီး ပြတ်မယ်ဆိုတဲ့စကားကို ပြောထွက်သွားခဲ့မိတယ် တကယ်တော့ အဲ့ဒီစကားကို မောင်မပြောသင့်ခဲ့ပါဘူး စိတ်ဆိုးနေတဲ့အချိန်မှာ မစဉ်းစားဘဲ ပြောမိခဲ့တာပါ မောင်တကယ်ပြတ်ချင်တာလည်း မဟုတ်သလို မမကိုလည်း လက်လွှတ်ချင်တာ မဟုတ်ပါဘူး မောင့်အမှားကို မောင်ဝန်ခံပါတယ် နောက်ဆို မောင့်စိတ်ကို ပိုထိန်းပြီး မမကို နားလည်ပေးနိုင်အောင် ကြိုးစားပါ့မယ်
@@ -360,23 +242,20 @@
     </section>
 
     <script>
-        const correctPassword = "2684";
         let moveCount = 0;
 
-        // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန် JavaScript
+        // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန်
         function createHeart() {
             const heartsBg = document.getElementById('heartsBg');
             const heart = document.createElement('div');
             heart.classList.add('heart');
             
-            // ကျပန်း အရွယ်အစားနှင့် တည်နေရာ
-            const size = Math.random() * 15 + 10; // 10px to 25px
+            const size = Math.random() * 15 + 10;
             heart.style.width = size + 'px';
             heart.style.height = size + 'px';
             heart.style.left = Math.random() * 100 + 'vw';
             
-            // ကျပန်း ကြာချိန်
-            const duration = Math.random() * 3 + 4; // 4s to 7s
+            const duration = Math.random() * 3 + 4;
             heart.style.animationDuration = duration + 's';
             
             heartsBg.appendChild(heart);
@@ -388,23 +267,7 @@
 
         setInterval(createHeart, 400);
 
-        function openModal() {
-            document.getElementById('passModal').style.display = 'flex';
-            document.getElementById('errorMsg').style.display = 'none';
-            document.getElementById('passInput').value = '';
-        }
-
-        function checkPassword() {
-            const userPass = document.getElementById('passInput').value;
-            if (userPass === correctPassword) {
-                document.getElementById('passModal').style.display = 'none';
-                document.getElementById('postcardModal').style.display = 'flex';
-            } else {
-                document.getElementById('errorMsg').style.display = 'block';
-            }
-        }
-
-        // "စိတ်ဆိုးမပြေဘူး" ခလုတ်ကို နှိပ်လျှင်/ထိလျှင် ပြေးပြီး သေးသွားကာ ပျောက်သွားရန်
+        // NO ခလုတ် ပြေးပြီး သေးသွားစေရန်
         function moveButton() {
             moveCount++;
             const noBtn = document.getElementById('noBtn');
@@ -425,12 +288,10 @@
             }
         }
 
-        // "စိတ်ဆိုးပြေမယ်" နှိပ်လျှင် စာလွှာပေါ်လာစေရန်
+        // YES နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
         function acceptForgiveness() {
-            document.getElementById('postcardModal').style.display = 'none';
-            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('questionCard').style.display = 'none';
             document.getElementById('letterSection').style.display = 'flex';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 
