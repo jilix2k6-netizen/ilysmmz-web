@@ -268,4 +268,78 @@
         <div class="postcard-container" id="postcardBox">
             <div class="envelope-icon">💌</div>
             <h3 style="color: #ff4757; margin-bottom: 10px; font-size: 20px;">မောင်တောင်းပန်ပါတယ်</h3>
-            <p style="color: #66
+            <p style="color: #666; font-size: 14px;">စိတ်ဆိုးပြေပါတော့နော်ကလေးလေးရာ... 💕</p>
+            
+            <div class="choice-container" id="choiceArea">
+                <button id="yesBtn" class="btn-choice-yes" onclick="acceptForgiveness()">စိတ်ဆိုးပြေမယ် 💖</button>
+                <button id="noBtn" class="btn-choice-no" onmouseover="moveButton()" onclick="moveButton()">စိတ်ဆိုးမပြေဘူး 😒</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ဖိတ်စာ / တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section (ပုံများ လုံးဝမပါပါ) -->
+    <section id="letterSection" class="letter-section">
+        <div class="letter-card">
+            <div class="letter-header">💌 For My Sweetheart 💌</div>
+            <div class="letter-body" id="letterText">
+                (ဒီနေရာမှာ နောက်မှ ပေးပို့မယ့် ဖိတ်စာ သို့မဟုတ် တောင်းပန်စာ စာသားတွေကို ထည့်သွင်းပေးပါမည်။)
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const correctPassword = "2684";
+        let moveCount = 0;
+
+        function openModal() {
+            document.getElementById('passModal').style.display = 'flex';
+            document.getElementById('errorMsg').style.display = 'none';
+            document.getElementById('passInput').value = '';
+        }
+
+        function checkPassword() {
+            const userPass = document.getElementById('passInput').value;
+            if (userPass === correctPassword) {
+                document.getElementById('passModal').style.display = 'none';
+                document.getElementById('postcardModal').style.display = 'flex';
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        // စိတ်ဆိုးမပြေဘူး ခလုတ်ကို နှိပ် သို့မဟုတ် Touch လုပ်လိုက်ရင် ပြေးပြီး သေးသွားစေရန်
+        function moveButton() {
+            moveCount++;
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+
+            if (moveCount < 5) {
+                // ခလုတ် ရန်ပြေးရန် Random Position တွက်ချက်ခြင်း
+                const randomX = (Math.random() - 0.5) * 160;
+                const randomY = (Math.random() - 0.5) * 100;
+                
+                // စာသားနှင့် အရွယ်အစား သေးသွားစေရန်
+                const scale = 1 - (moveCount * 0.18);
+                noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
+                
+                // စိတ်ဆိုးပြေမယ် ခလုတ် တဖြည်းဖြည်း ကြီးလာစေရန်
+                const yesScale = 1 + (moveCount * 0.15);
+                yesBtn.style.transform = `scale(${yesScale})`;
+            } else {
+                // ၅ ကြိမ်ပြည့်ရင် ပျောက်သွားမည်
+                noBtn.style.display = 'none';
+                yesBtn.style.transform = `scale(1.4)`;
+            }
+        }
+
+        // စိတ်ဆိုးပြေမယ် နှိပ်လျှင် ဖိတ်စာ ပေါ်လာစေရန်
+        function acceptForgiveness() {
+            document.getElementById('postcardModal').style.display = 'none';
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('letterSection').style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
