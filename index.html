@@ -110,13 +110,18 @@
             }
         }
 
-        .cute-img {
+        /* Code ဖြင့် ဖန်တီးထားသော Stitch Sticker Animated Container */
+        .stitch-avatar-box {
             width: 140px;
             height: 140px;
-            object-fit: contain;
             margin: 0 auto 15px;
-            display: block;
-            border-radius: 20px;
+            position: relative;
+            animation: floatStitch 3s ease-in-out infinite;
+        }
+
+        @keyframes floatStitch {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .question-text {
@@ -208,6 +213,7 @@
             font-size: 16px;
             color: #ff4757;
             font-weight: bold;
+            line-height: 1.5;
         }
 
         /* အဆင့် ၃ - စာအိတ်ကို နှိပ်မှ ပေါ်လာမည့် တောင်းပန်စာ Section */
@@ -269,9 +275,51 @@
 
     <!-- ပထမဆုံး အပေါ်ကနေ ကျလာမည့် Question Card -->
     <div class="postcard-container" id="questionCard">
-        <!-- သေချာပေါက် ပေါ်မည့် Stitch Sorry Sticker GIF -->
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2F3OXFvNHVvY3I2bW50Mmx0MXFubmpmdzB1NHN6ZXo1aDNrdG9zZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9n/135E47VEy6T6Cs/giphy.gif" alt="Stitch Sorry" class="cute-img">
         
+        <!-- Stitch Character holding "I'm Sorry" Sign Vector Graphic -->
+        <div class="stitch-avatar-box">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+                <!-- Blue Stitch Body Base -->
+                <ellipse cx="100" cy="130" rx="45" ry="40" fill="#2979FF"/>
+                <!-- Stomach Light Patch -->
+                <ellipse cx="100" cy="135" rx="30" ry="25" fill="#90CAF9"/>
+                
+                <!-- Left Ear -->
+                <path d="M 65 90 C 20 40, 10 90, 55 105 Z" fill="#2979FF"/>
+                <path d="M 60 92 C 25 50, 18 90, 52 102 Z" fill="#FF80AB"/>
+                
+                <!-- Right Ear -->
+                <path d="M 135 90 C 180 40, 190 90, 145 105 Z" fill="#2979FF"/>
+                <path d="M 140 92 C 175 50, 182 90, 148 102 Z" fill="#FF80AB"/>
+                
+                <!-- Stitch Head -->
+                <ellipse cx="100" cy="90" rx="48" ry="38" fill="#2979FF"/>
+                <!-- Eye Patches -->
+                <ellipse cx="80" cy="85" rx="15" ry="18" fill="#1565C0" transform="rotate(-10 80 85)"/>
+                <ellipse cx="120" cy="85" rx="15" ry="18" fill="#1565C0" transform="rotate(10 120 85)"/>
+                <!-- Eyes -->
+                <circle cx="82" cy="85" r="7" fill="#000"/>
+                <circle cx="118" cy="85" r="7" fill="#000"/>
+                <circle cx="84" cy="82" r="2.5" fill="#FFF"/>
+                <circle cx="120" cy="82" r="2.5" fill="#FFF"/>
+                <!-- Nose -->
+                <ellipse cx="100" cy="95" rx="10" ry="6" fill="#0D47A1"/>
+                
+                <!-- Sad Mouth -->
+                <path d="M 90 108 Q 100 102 110 108" stroke="#0D47A1" stroke-width="3" fill="none" stroke-linecap="round"/>
+                
+                <!-- Stitch Hands holding Sign -->
+                <circle cx="60" cy="140" r="10" fill="#2979FF"/>
+                <circle cx="140" cy="140" r="10" fill="#2979FF"/>
+                
+                <!-- "I'm Sorry" Signboard (Animated Wiggle) -->
+                <g class="signboard">
+                    <rect x="35" y="140" width="130" height="45" rx="8" fill="#FFF" stroke="#FF4757" stroke-width="3"/>
+                    <text x="100" y="167" font-size="16" font-weight="bold" fill="#FF4757" text-anchor="middle">I'm Sorry 🥺</text>
+                </g>
+            </svg>
+        </div>
+
         <div class="question-text">မောင်တို့တစ်ကနေ ပြန်စကြမလား?</div>
         
         <div class="choice-container">
@@ -301,7 +349,7 @@
 
     <script>
         let moveCount = 0;
-        const maxMoves = 10; // ၁၀ ကြိမ်အထိ နှိပ်/ထိလို့ရအောင် ပြင်ဆင်ထားသည်
+        const maxMoves = 10;
 
         // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန်
         function createHeart() {
