@@ -16,6 +16,61 @@
             background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
             color: #fff;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect (Floating Hearts) */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(255, 255, 255, 0.7);
+            display: inline-block;
+            transform: rotate(-45deg);
+            animation: floatUp 6s infinite linear;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50%;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(-45deg) scale(0.6);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-45deg) scale(1.2);
+                opacity: 0;
+            }
         }
 
         /* ပင်မစာမျက်နှာ (Home Section) */
@@ -26,6 +81,8 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .hero-card {
@@ -138,13 +195,14 @@
             font-weight: bold;
         }
 
-        /* Gallery Section */
+        /* Gallery / Anniversary Section */
         .gallery-section {
             display: none;
             min-height: 100vh;
             padding: 50px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            position: relative;
+            z-index: 10;
         }
 
         .gallery-section h2 {
@@ -159,7 +217,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 18px;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
         }
 
         .photo-card {
@@ -193,7 +251,6 @@
             font-weight: 500;
         }
 
-        /* ဖတ်ရန် ခလုတ်များ */
         .btn-read {
             display: inline-block;
             margin: 4px auto 0;
@@ -212,7 +269,63 @@
             background-color: #fff0f3;
         }
 
-        /* ပုံတစ်ပုံချင်းစီအတွက် စာဖတ်ရန် Full Page Modal */
+        /* Anniversary Menu Buttons Style */
+        .anni-section-title {
+            font-size: 22px;
+            color: #fff;
+            margin: 35px 0 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .anni-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .anni-btn-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .anni-btn-card:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        .anni-info {
+            text-align: left;
+        }
+
+        .anni-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        .anni-sub {
+            font-size: 12px;
+            color: #777;
+            margin-top: 3px;
+        }
+
+        .anni-icon {
+            font-size: 24px;
+        }
+
+        /* စာဖတ်ရန် Full Page Modal */
         .story-modal {
             position: fixed;
             top: 0;
@@ -233,7 +346,7 @@
         .story-card {
             background: #ffffff;
             border-radius: 25px;
-            padding: 20px;
+            padding: 25px 20px;
             max-width: 380px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
@@ -243,7 +356,7 @@
 
         .story-card img {
             width: 100%;
-            max-height: 240px;
+            max-height: 220px;
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -252,16 +365,23 @@
         .story-title {
             font-size: 18px;
             color: #ff4757;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: bold;
         }
 
         .story-text {
             font-size: 14px;
-            color: #555;
-            line-height: 1.6;
+            color: #444;
+            line-height: 1.8;
             margin-bottom: 20px;
             text-align: justify;
+            white-space: pre-line;
+            background: #fff5f6;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px dashed #ff7eb3;
+            max-height: 50vh;
+            overflow-y: auto;
         }
 
         .btn-close {
@@ -277,6 +397,9 @@
     </style>
 </head>
 <body>
+
+    <!-- အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect -->
+    <div class="hearts-bg" id="heartsBg"></div>
 
     <!-- ပင်မစာမျက်နှာ -->
     <section class="hero-section" id="heroSection">
@@ -297,12 +420,12 @@
         </div>
     </div>
 
-    <!-- Gallery Section -->
+    <!-- Gallery & Anniversary Section -->
     <section id="memories" class="gallery-section">
         <h2>Our Memories 💕</h2>
         <div class="photo-grid">
             
-            <!-- ပုံ ၁ (44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png) -->
+            <!-- ပုံ ၁ (MayZin) -->
             <div class="photo-card">
                 <div class="photo-box">
                     <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
@@ -311,7 +434,7 @@
                 <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
             </div>
 
-            <!-- ပုံ ၂ (isay.png) -->
+            <!-- ပုံ ၂ (Thuya) -->
             <div class="photo-card">
                 <div class="photo-box">
                     <img src="isay.png" alt="Thuya Memory">
@@ -321,34 +444,108 @@
             </div>
 
         </div>
+
+        <!-- Anniversary ရွေးချယ်စရာ ခလုတ်များ -->
+        <h3 class="anni-section-title">Our Anniversary Letters 🎉</h3>
+        <div class="anni-grid">
+            <div class="anni-btn-card" onclick="openStory('anni1')">
+                <div class="anni-info">
+                    <div class="anni-title">1st Month Anniversary 💖</div>
+                    <div class="anni-sub">၁ လပြည့် အမှတ်တရ စာလွှာလေး ဖတ်ရန်</div>
+                </div>
+                <div class="anni-icon">💌</div>
+            </div>
+
+            <div class="anni-btn-card" onclick="openStory('anni2')">
+                <div class="anni-info">
+                    <div class="anni-title">2nd Month Anniversary 💕</div>
+                    <div class="anni-sub">၂ လပြည့် အမှတ်တရ စာလွှာလေး ဖတ်ရန်</div>
+                </div>
+                <div class="anni-icon">💌</div>
+            </div>
+
+            <div class="anni-btn-card" onclick="openStory('anni3')">
+                <div class="anni-info">
+                    <div class="anni-title">3rd Month Anniversary 💗</div>
+                    <div class="anni-sub">၃ လပြည့် အမှတ်တရ စာလွှာလေး ဖတ်ရန်</div>
+                </div>
+                <div class="anni-icon">💌</div>
+            </div>
+        </div>
     </section>
 
-    <!-- 44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <!-- MayZin မူလစာမျက်နှာ -->
     <div class="story-modal" id="story1">
         <div class="story-card">
             <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
             <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
-            <div class="story-text">
-                ဒီနေရာမှာ MayZin နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
-            </div>
+            <div class="story-text">ဒီနေရာမှာ MayZin နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။</div>
             <button class="btn-close" onclick="closeStory('story1')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
-    <!-- isay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <!-- Thuya မူလစာမျက်နှာ -->
     <div class="story-modal" id="story2">
         <div class="story-card">
             <img src="isay.png" alt="Thuya Memory">
             <div class="story-title">🌿 Thuya ရဲ့ အမှတ်တရ စာလွှာ</div>
-            <div class="story-text">
-                ဒီနေရာမှာ Thuya နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
-            </div>
+            <div class="story-text">ဒီနေရာမှာ Thuya နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။</div>
             <button class="btn-close" onclick="closeStory('story2')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- 1 Month Anniversary Modal -->
+    <div class="story-modal" id="anni1">
+        <div class="story-card">
+            <div class="story-title">💖 1st Month Anniversary</div>
+            <div class="story-text">(ဒီနေရာမှာ ၁ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်ပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('anni1')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- 2 Month Anniversary Modal -->
+    <div class="story-modal" id="anni2">
+        <div class="story-card">
+            <div class="story-title">💕 2nd Month Anniversary</div>
+            <div class="story-text">(ဒီနေရာမှာ ၂ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်ပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('anni2')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- 3 Month Anniversary Modal -->
+    <div class="story-modal" id="anni3">
+        <div class="story-card">
+            <div class="story-title">💗 3rd Month Anniversary</div>
+            <div class="story-text">(ဒီနေရာမှာ ၃ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်ပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('anni3')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
     <script>
         const correctPassword = "2684";
+
+        // အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲစေရန်
+        function createHeart() {
+            const heartsBg = document.getElementById('heartsBg');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const size = Math.random() * 15 + 10;
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 3 + 4;
+            heart.style.animationDuration = duration + 's';
+            
+            heartsBg.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 400);
 
         function openModal() {
             const modal = document.getElementById('passModal');
