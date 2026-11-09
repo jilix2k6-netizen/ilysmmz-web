@@ -159,7 +159,6 @@
             font-size: 14px;
             cursor: pointer;
             position: relative;
-            /* ပြေးသွားတဲ့ အခါ ပိုပြီး Smooth ဖြစ်စေရန် Transition အချိန်တိုးပေးထားပါသည် */
             transition: transform 0.4s ease-out, opacity 0.4s ease-out;
             z-index: 1;
         }
@@ -223,10 +222,10 @@
 
     <!-- ပထမဆုံး အပေါ်ကနေ ကျလာမည့် Question Card -->
     <div class="postcard-container" id="questionCard">
-        <!-- Stitch အရုပ်လေး -->
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1MW1rdWZ3ZTBpeWtrNmlvOGp4MXlueWc3N3R1cHFvOGp4MXlueWc3N3R1cHFvOWx1ZjN6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/135E47VEy6T6Cs/giphy.gif" alt="Cute Stitch" class="cute-img">
+        <!-- I'm Sorry ဆိုင်းဘုတ်ကိုင်ထားသော Stitch ရုပ်ကလေး (GIF Animation) -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1MW1rdWZ3ZTBpeWtrNmlvOGp4MXlueWc3N3R1cHFvOWx1ZjN6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/135E47VEy6T6Cs/giphy.gif" alt="Stitch Sorry" class="cute-img">
         
-        <div class="question-text">ကိုတို့တစ်ကနေ ပြန်စကြမလား?</div>
+        <div class="question-text">မောင်တို့တစ်ကနေ ပြန်စကြမလား?</div>
         
         <div class="choice-container">
             <button id="yesBtn" class="btn-yes" onclick="acceptForgiveness()">❤️ Yes</button>
@@ -279,22 +278,18 @@
             const yesBtn = document.getElementById('yesBtn');
 
             if (moveCount <= maxMoves) {
-                // အကြိမ်ရေ ပိုများများအတွက် Random တည်နေရာ တွက်ချက်ခြင်း
                 const randomX = (Math.random() - 0.5) * 180;
                 const randomY = (Math.random() - 0.5) * 120;
                 
-                // တဖြည်းဖြည်း ချောမွေ့စွာ သေးသွားစေရန်
                 const scale = Math.max(0.2, 1 - (moveCount * 0.08));
                 const opacity = Math.max(0.2, 1 - (moveCount * 0.08));
                 
                 noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
                 noBtn.style.opacity = opacity;
                 
-                // Yes ခလုတ် ပိုကြီးလာစေရန်
                 const yesScale = 1 + (moveCount * 0.1);
                 yesBtn.style.transform = `scale(${yesScale})`;
             } else {
-                // ၁၀ ကြိမ်ပြည့်ရင် ပျောက်သွားမည်
                 noBtn.style.display = 'none';
                 yesBtn.style.transform = `scale(1.8)`;
             }
