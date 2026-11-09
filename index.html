@@ -31,7 +31,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect (Floating Hearts) */
+        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect */
         .hearts-bg {
             position: fixed;
             top: 0;
@@ -84,7 +84,7 @@
             }
         }
 
-        /* ပထမဆုံး ပေါ်လာမည့် Interactive Question Card */
+        /* စာအိတ်ကလေး အပေါ်ကနေ အောက်ကို ကျလာမည့် Drop-down Animation */
         .postcard-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -96,17 +96,18 @@
             text-align: center;
             position: relative;
             z-index: 10;
+            animation: slideDown 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
         }
 
-        .step-badge {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: bold;
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-150vh);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .cute-img {
@@ -115,6 +116,7 @@
             object-fit: contain;
             margin: 0 auto 15px;
             display: block;
+            border-radius: 20px;
         }
 
         .question-text {
@@ -130,7 +132,7 @@
             align-items: center;
             gap: 15px;
             position: relative;
-            min-height: 60px;
+            min-height: 80px;
         }
 
         .btn-yes {
@@ -139,24 +141,27 @@
             border: none;
             border-radius: 25px;
             font-weight: bold;
-            padding: 12px 25px;
+            padding: 10px 22px;
             font-size: 15px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
-            transition: all 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.4s ease, font-size 0.4s ease;
+            z-index: 2;
         }
 
         .btn-no {
-            background: linear-gradient(135deg, #8e9eab, #eef2f3);
-            color: #555;
-            border: none;
+            background: #fff;
+            color: #ff4757;
+            border: 2px solid #ff4757;
             border-radius: 25px;
             font-weight: bold;
-            padding: 12px 20px;
+            padding: 10px 18px;
             font-size: 14px;
             cursor: pointer;
             position: relative;
-            transition: transform 0.15s ease, opacity 0.3s ease;
+            /* ပြေးသွားတဲ့ အခါ ပိုပြီး Smooth ဖြစ်စေရန် Transition အချိန်တိုးပေးထားပါသည် */
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+            z-index: 1;
         }
 
         /* တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section */
@@ -181,6 +186,12 @@
             color: #333;
             text-align: center;
             border: 2px dashed #ff7eb3;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .letter-header {
@@ -210,39 +221,33 @@
     <!-- အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် အပိုင်း -->
     <div class="hearts-bg" id="heartsBg"></div>
 
-    <!-- ပထမဆုံး ပေါ်လာမည့် Interactive Question Card -->
+    <!-- ပထမဆုံး အပေါ်ကနေ ကျလာမည့် Question Card -->
     <div class="postcard-container" id="questionCard">
-        <div class="step-badge">အဆင့် (၁ / ၃) ✨</div>
-        <!-- ပန်ဒါဝက်ဝံ စတစ်ကာ အရုပ်လေး -->
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlNXBhZXE5NDBvZTF3dHZrdnhnZXliZXU5dWUydnVzMTgwYm81dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Panda" class="cute-img">
+        <!-- Stitch အရုပ်လေး -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1MW1rdWZ3ZTBpeWtrNmlvOGp4MXlueWc3N3R1cHFvOGp4MXlueWc3N3R1cHFvOWx1ZjN6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/135E47VEy6T6Cs/giphy.gif" alt="Cute Stitch" class="cute-img">
         
-        <div class="question-text">မမ မောင့်ကို ခွင့်လွှတ်ပါနော် 🥺</div>
+        <div class="question-text">ကိုတို့တစ်ကနေ ပြန်စကြမလား?</div>
         
         <div class="choice-container">
-            <button id="yesBtn" class="btn-yes" onclick="acceptForgiveness()">စိတ်ဆိုးပြေမယ် 💖</button>
-            <button id="noBtn" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">စိတ်ဆိုးမပြေဘူး 😒</button>
+            <button id="yesBtn" class="btn-yes" onclick="acceptForgiveness()">❤️ Yes</button>
+            <button id="noBtn" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">❌ သေချာလို့လား?</button>
         </div>
     </div>
 
-    <!-- "စိတ်ဆိုးပြေမယ်" နှိပ်လိုက်ရင် ပေါ်လာမည့် တောင်းပန်စာ Section -->
+    <!-- "Yes" နှိပ်လိုက်ရင် ပေါ်လာမည့် တောင်းပန်စာ Section -->
     <section id="letterSection" class="letter-section">
         <div class="letter-card">
-            <div class="letter-header">💌 တောင်းပန်လွှာလေး 💌</div>
-            <div class="letter-body">မမရေ… 
-မောင်တကယ်တောင်းပန်ပါတယ်နော်မနက်က မမကို ဖုန်းဆက်တာ မကိုင်တော့ မောင်စိတ်ဆိုးသွားခဲ့တာပါမမမအားဘူးဆိုတာ မောင်သိပါတယ်အလုပ်များတဲ့ကြားကနေတောင် မောင့်အတွက် အချိန်ပေးနေတယ်ဆိုတာလည်း မောင်နားလည်ပါတယ်ဒါပေမဲ့ မောင့်စိတ်က ကလေးဆန်ပြီး မမဆီက အာရုံစိုက်မှုလေးတွေ ပိုလိုချင်နေမိလို့ စိတ်ဆိုးမိခဲ့တာပါအဲ့ဒီအတွက် မောင့်ကို ခွင့်လွှတ်ပေးပါနော်
+            <div class="letter-header">💌 မောင့်ဆီက ရင်တွင်းစကားလေး 💌</div>
+            <div class="letter-body">မမရေ...
+မောင် အများကြီး တောင်းပန်ပါတယ်နော်။ ဒီတစ်ခါတော့ မောင် အရင်လို မဖြစ်အောင် ပိုပြီး ဂရုစိုက်ပေးပါမယ်၊ ပိုပြီးလည်း အလျှော့ပေးပါ့မယ်။ နောက်လည်း မဆိုးတော့ပါဘူးနော်...။ 
 
-မမက မောင့်ကို စိတ်ပျက်နေပြီလို့ ပြောလိုက်တော့ မောင်လည်း စိတ်တိုပြီး ပြတ်မယ်ဆိုတဲ့စကားကို ပြောထွက်သွားခဲ့မိတယ်တကယ်တော့ အဲ့ဒီစကားကို မောင်မပြောသင့်ခဲ့ပါဘူးစိတ်ဆိုးနေတဲ့အချိန်မှာ မစဉ်းစားဘဲ ပြောမိခဲ့တာပါမောင်တကယ်ပြတ်ချင်တာလည်း မဟုတ်သလို မမကိုလည်း လက်လွှတ်ချင်တာ မဟုတ်ပါဘူးမောင့်အမှားကို မောင်ဝန်ခံပါတယ်နောက်ဆို မောင့်စိတ်ကို ပိုထိန်းပြီး မမကို နားလည်ပေးနိုင်အောင် ကြိုးစားပါ့မယ်
-
-မမရေ မောင့်ကို စိတ်ဆိုးနေတာလေး ပြေပါတော့နော်မမလိုချစ်စရာကောင်းတဲ့သူလေးကို မောင်က ပြတ်စရာလားမောင်က မမနဲ့ပဲ ဆက်ပြီးအတူရှိချင်တာပါအဆင်မပြေတာလေးတွေရှိရင်လည်း စိတ်ဆိုးပြီး ဝေးကွာသွားကြမယ့်အစား တစ်ယောက်ကိုတစ်ယောက် နားလည်ပေးပြီး ပြန်ချော့ကြရအောင်နော်
-
-မောင့်ရဲ့ ကလေးဆန်တဲ့အကျင့်လေးတွေကြောင့် မမစိတ်ပင်ပန်းခဲ့ရရင် တကယ်တောင်းပန်ပါတယ်မောင့်ကို ခွင့်လွှတ်ပေးပါဦးနော်
-
-စိတ်မဆိုးတော့နဲ့နော် မောင့်မမလေးမောင် မမကို အရမ်းချစ်တယ်ဒီနေ့လည်းချစ်တယ်နောက်နေ့တွေလည်း အဲ့ဒီထက်ပိုချစ်သွားချင်တယ်မောင့်ကိုလည်း ချစ်ပေးနေပါဦးနော်❤️🥺</div>
+ပြတ်လည်း မပြတ်နိုင်သလို၊ စိတ်ချင်းလည်း ဘယ်တော့မှ မဝေးချင်ပါဘူး။ မောင့်ကို နောက်ထပ် အခွင့်အရေးလေး တစ်ခါလောက် ထပ်ပေးပါနော်... 🥺🩷</div>
         </div>
     </section>
 
     <script>
         let moveCount = 0;
+        const maxMoves = 10; // ၁၀ ကြိမ်အထိ နှိပ်/ထိလို့ရအောင် ပြင်ဆင်ထားသည်
 
         // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန်
         function createHeart() {
@@ -267,28 +272,35 @@
 
         setInterval(createHeart, 400);
 
-        // "စိတ်ဆိုးမပြေဘူး" ခလုတ်ကို ထိလျှင်/နှိပ်လျှင် ပြေးပြီး သေးသွားကာ ပျောက်သွားရန်
+        // "သေချာလို့လား?" ခလုတ် Smooth အဖြစ်ဆုံး ပြေးပြီး သေးသွားစေရန်
         function moveButton() {
             moveCount++;
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
 
-            if (moveCount < 5) {
-                const randomX = (Math.random() - 0.5) * 160;
-                const randomY = (Math.random() - 0.5) * 100;
+            if (moveCount <= maxMoves) {
+                // အကြိမ်ရေ ပိုများများအတွက် Random တည်နေရာ တွက်ချက်ခြင်း
+                const randomX = (Math.random() - 0.5) * 180;
+                const randomY = (Math.random() - 0.5) * 120;
                 
-                const scale = 1 - (moveCount * 0.18);
+                // တဖြည်းဖြည်း ချောမွေ့စွာ သေးသွားစေရန်
+                const scale = Math.max(0.2, 1 - (moveCount * 0.08));
+                const opacity = Math.max(0.2, 1 - (moveCount * 0.08));
+                
                 noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
+                noBtn.style.opacity = opacity;
                 
-                const yesScale = 1 + (moveCount * 0.15);
+                // Yes ခလုတ် ပိုကြီးလာစေရန်
+                const yesScale = 1 + (moveCount * 0.1);
                 yesBtn.style.transform = `scale(${yesScale})`;
             } else {
+                // ၁၀ ကြိမ်ပြည့်ရင် ပျောက်သွားမည်
                 noBtn.style.display = 'none';
-                yesBtn.style.transform = `scale(1.4)`;
+                yesBtn.style.transform = `scale(1.8)`;
             }
         }
 
-        // "စိတ်ဆိုးပြေမယ်" နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
+        // "Yes" နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
         function acceptForgiveness() {
             document.getElementById('questionCard').style.display = 'none';
             document.getElementById('letterSection').style.display = 'flex';
