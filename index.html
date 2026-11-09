@@ -20,7 +20,7 @@
             position: relative;
         }
 
-        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect (Floating Hearts) */
+        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect */
         .hearts-bg {
             position: fixed;
             top: 0;
@@ -205,7 +205,7 @@
             font-weight: bold;
         }
 
-        /* Gallery / Anniversary Section */
+        /* Gallery & Anniversary Section */
         .gallery-section {
             display: none;
             min-height: 100vh;
@@ -220,6 +220,50 @@
             margin-bottom: 20px;
             color: #fff;
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Anniversary Counter Box Style */
+        .counter-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .counter-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #fff5f6;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .counter-box {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 5px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .counter-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .counter-label {
+            font-size: 11px;
+            color: #ffeef1;
+            margin-top: 3px;
         }
 
         .photo-grid {
@@ -277,6 +321,56 @@
 
         .btn-read:hover {
             background-color: #fff0f3;
+        }
+
+        /* Birthday Cards Section */
+        .birthday-section-title {
+            font-size: 20px;
+            color: #fff;
+            margin: 25px 0 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .birthday-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .birthday-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .bday-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .bday-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .bday-date {
+            font-size: 12px;
+            color: #fff5f6;
         }
 
         /* Anniversary Menu Style (နှစ်တန်းခွဲထားခြင်း) */
@@ -430,7 +524,7 @@
         }
 
         @media (max-width: 500px) {
-            .anni-dual-container {
+            .anni-dual-container, .birthday-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -465,8 +559,31 @@
     <!-- Gallery & Anniversary Section -->
     <section id="memories" class="gallery-section">
         <h2>Our Memories 💕</h2>
+
+        <!-- Anniversary Counter Box (ချစ်သက်တမ်း ရေတွက်စက်) -->
+        <div class="counter-card">
+            <div class="counter-title">✨ Together Since ✨</div>
+            <div class="counter-grid">
+                <div class="counter-box">
+                    <div class="counter-number" id="daysCount">0</div>
+                    <div class="counter-label">ရက်</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="hoursCount">0</div>
+                    <div class="counter-label">နာရီ</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="minsCount">0</div>
+                    <div class="counter-label">မိနစ်</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="secsCount">0</div>
+                    <div class="counter-label">စက္ကန့်</div>
+                </div>
+            </div>
+        </div>
+
         <div class="photo-grid">
-            
             <!-- ပုံ ၁ (MayZin) -->
             <div class="photo-card">
                 <div class="photo-box">
@@ -484,7 +601,21 @@
                 <div class="photo-caption">Thuya 🌿</div>
                 <button class="btn-read" onclick="openStory('story2')">ဖတ်ရန် 📖</button>
             </div>
+        </div>
 
+        <!-- Birthday Cards Section (မွေးနေ့ ကဒ်များ) -->
+        <h3 class="birthday-section-title">🎂 Our Birthdays 🎂</h3>
+        <div class="birthday-grid">
+            <div class="birthday-card" onclick="openStory('bday_mayzin')">
+                <div class="bday-icon">🌸</div>
+                <div class="bday-name">MayZin's Birthday</div>
+                <div class="bday-date">မွေးနေ့ အမှတ်တရ စာလွှာ ဖတ်ရန်</div>
+            </div>
+            <div class="birthday-card" onclick="openStory('bday_thuya')">
+                <div class="bday-icon">🌿</div>
+                <div class="bday-name">Thuya's Birthday</div>
+                <div class="bday-date">မွေးနေ့ အမှတ်တရ စာလွှာ ဖတ်ရန်</div>
+            </div>
         </div>
 
         <!-- Anniversary ရွေးချယ်စရာ ခလုတ်များ (တန်းနှစ်တန်း ခွဲထားသည်) -->
@@ -569,6 +700,24 @@
         </div>
     </div>
 
+    <!-- MayZin Birthday Modal -->
+    <div class="story-modal" id="bday_mayzin">
+        <div class="story-card">
+            <div class="story-title">🌸 MayZin's Birthday 🎉</div>
+            <div class="story-text">(ဒီနေရာမှာ MayZin ရဲ့ မွေးနေ့ အမှတ်တရ စာသားလေးတွေကို ထည့်သွင်းပေးပါ။)</div>
+            <button class="btn-close" onclick="closeStory('bday_mayzin')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- Thuya Birthday Modal -->
+    <div class="story-modal" id="bday_thuya">
+        <div class="story-card">
+            <div class="story-title">🌿 Thuya's Birthday 🎉</div>
+            <div class="story-text">(ဒီနေရာမှာ Thuya ရဲ့ မွေးနေ့ အမှတ်တရ စာသားလေးတွေကို ထည့်သွင်းပေးပါ။)</div>
+            <button class="btn-close" onclick="closeStory('bday_thuya')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
     <!-- MayZin 1 Month Anni -->
     <div class="story-modal" id="m_1month">
         <div class="story-card">
@@ -625,6 +774,29 @@
 
     <script>
         const correctPassword = "2684";
+
+        // 🌟 အစပြုခဲ့သည့် နေ့စွဲ (ဒီနေရာမှာ နှစ်ယောက်သား စတင်တွဲတဲ့ရက်ကို YYYY-MM-DD ပုံစံနဲ့ ပြောင်းထည့်နိုင်ပါတယ်)
+        const startDate = new Date("2026-08-04T00:00:00");
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('daysCount').innerText = days;
+                document.getElementById('hoursCount').innerText = hours;
+                document.getElementById('minsCount').innerText = mins;
+                document.getElementById('secsCount').innerText = secs;
+            }
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
 
         // အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲစေရန်
         function createHeart() {
