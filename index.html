@@ -119,6 +119,7 @@
             color: #fff5f6;
             margin-bottom: 20px;
             line-height: 1.5;
+            font-style: italic;
         }
 
         /* ဝင်ရန် ခလုတ် */
@@ -278,7 +279,7 @@
             background-color: #fff0f3;
         }
 
-        /* Anniversary Menu Buttons Style */
+        /* Anniversary Menu Style (နှစ်တန်းခွဲထားခြင်း) */
         .anni-section-title {
             font-size: 20px;
             color: #fff;
@@ -286,32 +287,57 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
+        /* 2 Columns Grid Layout for Anniversary Rows */
+        .anni-dual-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .anni-column {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .anni-column-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 8px;
+        }
+
         .anni-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-width: 380px;
-            margin: 0 auto;
+            gap: 10px;
         }
 
         .anni-btn-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 15px 20px;
+            border-radius: 15px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .anni-btn-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background: #ffffff;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .anni-info {
@@ -319,19 +345,19 @@
         }
 
         .anni-title {
-            font-size: 15px;
+            font-size: 13.5px;
             font-weight: bold;
             color: #ff4757;
         }
 
         .anni-sub {
-            font-size: 11.5px;
+            font-size: 10.5px;
             color: #777;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         .anni-icon {
-            font-size: 22px;
+            font-size: 18px;
         }
 
         /* စာဖတ်ရန် Full Page Modal */
@@ -403,6 +429,13 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        /* Mobile Responsive for Dual Columns */
+        @media (max-width: 500px) {
+            .anni-dual-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -415,8 +448,8 @@
         <div class="hero-card">
             <!-- ကြောင်ကလေး ဖုန်းကိုကိုင်ပြီး နမ်းနေတဲ့ စတေကာ GIF -->
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y1b250ajJscDF0bHllYWk2YTZ3OHFucmEzdjR6cXh3cTV3dzl3aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9n/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Cat Kissing Phone" class="cat-sticker">
-            <h1>🌸 Tya & Mzh Memories 🌸</h1>
-            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
+            <h1>💗 Tya & Mzh Memories 💗</h1>
+            <p>A collection of our sweetest moments & endless love 💕</p>
             <button class="btn-enter" onclick="openModal()">ဝင်ရန်</button>
         </div>
     </section>
@@ -456,55 +489,64 @@
 
         </div>
 
-        <!-- Anniversary ရွေးချယ်စရာ ခလုတ်များ (Thuya & MayZin ခွဲထားသည်) -->
+        <!-- Anniversary ရွေးချယ်စရာ ခလုတ်များ (တန်းနှစ်တန်း ခွဲထားသည်) -->
         <h3 class="anni-section-title">Our Anniversary Letters 🎉</h3>
-        <div class="anni-grid">
-            <!-- 1 Month Anni -->
-            <div class="anni-btn-card" onclick="openStory('t_1month')">
-                <div class="anni-info">
-                    <div class="anni-title">1 Month Anni (Thuya ရယ်) 💖</div>
-                    <div class="anni-sub">သုရရဲ့ ၁ လပြည့် အမှတ်တရ စာလွှာ</div>
+        
+        <div class="anni-dual-container">
+            <!-- MayZin ရဲ့ အတန်း -->
+            <div class="anni-column">
+                <div class="anni-column-title">MayZin 🌸</div>
+                <div class="anni-grid">
+                    <div class="anni-btn-card" onclick="openStory('m_1month')">
+                        <div class="anni-info">
+                            <div class="anni-title">1 Month Anni 💖</div>
+                            <div class="anni-sub">၁ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
+                    <div class="anni-btn-card" onclick="openStory('m_2month')">
+                        <div class="anni-info">
+                            <div class="anni-title">2 Month Anni 💕</div>
+                            <div class="anni-sub">၂ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
+                    <div class="anni-btn-card" onclick="openStory('m_3month')">
+                        <div class="anni-info">
+                            <div class="anni-title">3 Month Anni 💗</div>
+                            <div class="anni-sub">၃ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
                 </div>
-                <div class="anni-icon">💌</div>
-            </div>
-            <div class="anni-btn-card" onclick="openStory('m_1month')">
-                <div class="anni-info">
-                    <div class="anni-title">1 Month Anni (MayZin ရယ်) 💖</div>
-                    <div class="anni-sub">မေဇင်ရဲ့ ၁ လပြည့် အမှတ်တရ စာလွှာ</div>
-                </div>
-                <div class="anni-icon">💌</div>
-            </div>
-
-            <!-- 2 Month Anni -->
-            <div class="anni-btn-card" onclick="openStory('t_2month')">
-                <div class="anni-info">
-                    <div class="anni-title">2 Month Anni (Thuya ရယ်) 💕</div>
-                    <div class="anni-sub">သုရရဲ့ ၂ လပြည့် အမှတ်တရ စာလွှာ</div>
-                </div>
-                <div class="anni-icon">💌</div>
-            </div>
-            <div class="anni-btn-card" onclick="openStory('m_2month')">
-                <div class="anni-info">
-                    <div class="anni-title">2 Month Anni (MayZin ရယ်) 💕</div>
-                    <div class="anni-sub">မေဇင်ရဲ့ ၂ လပြည့် အမှတ်တရ စာလွှာ</div>
-                </div>
-                <div class="anni-icon">💌</div>
             </div>
 
-            <!-- 3 Month Anni -->
-            <div class="anni-btn-card" onclick="openStory('t_3month')">
-                <div class="anni-info">
-                    <div class="anni-title">3 Month Anni (Thuya ရယ်) 💗</div>
-                    <div class="anni-sub">သုရရဲ့ ၃ လပြည့် အမှတ်တရ စာလွှာ</div>
+            <!-- Thuya ရဲ့ အတန်း -->
+            <div class="anni-column">
+                <div class="anni-column-title">Thuya 🌿</div>
+                <div class="anni-grid">
+                    <div class="anni-btn-card" onclick="openStory('t_1month')">
+                        <div class="anni-info">
+                            <div class="anni-title">1 Month Anni 💖</div>
+                            <div class="anni-sub">၁ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
+                    <div class="anni-btn-card" onclick="openStory('t_2month')">
+                        <div class="anni-info">
+                            <div class="anni-title">2 Month Anni 💕</div>
+                            <div class="anni-sub">၂ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
+                    <div class="anni-btn-card" onclick="openStory('t_3month')">
+                        <div class="anni-info">
+                            <div class="anni-title">3 Month Anni 💗</div>
+                            <div class="anni-sub">၃ လပြည့် အမှတ်တရ စာလွှာ</div>
+                        </div>
+                        <div class="anni-icon">💌</div>
+                    </div>
                 </div>
-                <div class="anni-icon">💌</div>
-            </div>
-            <div class="anni-btn-card" onclick="openStory('m_3month')">
-                <div class="anni-info">
-                    <div class="anni-title">3 Month Anni (MayZin ရယ်) 💗</div>
-                    <div class="anni-sub">မေဇင်ရဲ့ ၃ လပြည့် အမှတ်တရ စာလွှာ</div>
-                </div>
-                <div class="anni-icon">💌</div>
             </div>
         </div>
     </section>
@@ -529,57 +571,57 @@
         </div>
     </div>
 
-    <!-- Thuya 1 Month Anni -->
-    <div class="story-modal" id="t_1month">
-        <div class="story-card">
-            <div class="story-title">💖 1 Month Anni (Thuya ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ သုရရဲ့ ၁ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
-            <button class="btn-close" onclick="closeStory('t_1month')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
     <!-- MayZin 1 Month Anni -->
     <div class="story-modal" id="m_1month">
         <div class="story-card">
-            <div class="story-title">💖 1 Month Anni (MayZin ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ မေဇင်ရဲ့ ၁ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <div class="story-title">💖 1 Month Anni (MayZin)</div>
+            <div class="story-text">(ဒီနေရာမှာ MayZin ရဲ့ ၁ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
             <button class="btn-close" onclick="closeStory('m_1month')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
-    <!-- Thuya 2 Month Anni -->
-    <div class="story-modal" id="t_2month">
-        <div class="story-card">
-            <div class="story-title">💕 2 Month Anni (Thuya ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ သုရရဲ့ ၂ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
-            <button class="btn-close" onclick="closeStory('t_2month')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
     <!-- MayZin 2 Month Anni -->
     <div class="story-modal" id="m_2month">
         <div class="story-card">
-            <div class="story-title">💕 2 Month Anni (MayZin ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ မေဇင်ရဲ့ ၂ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <div class="story-title">💕 2 Month Anni (MayZin)</div>
+            <div class="story-text">(ဒီနေရာမှာ MayZin ရဲ့ ၂ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
             <button class="btn-close" onclick="closeStory('m_2month')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
-    <!-- Thuya 3 Month Anni -->
-    <div class="story-modal" id="t_3month">
-        <div class="story-card">
-            <div class="story-title">💗 3 Month Anni (Thuya ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ သုရရဲ့ ၃ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
-            <button class="btn-close" onclick="closeStory('t_3month')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
     <!-- MayZin 3 Month Anni -->
     <div class="story-modal" id="m_3month">
         <div class="story-card">
-            <div class="story-title">💗 3 Month Anni (MayZin ရယ်)</div>
-            <div class="story-text">(ဒီနေရာမှာ မေဇင်ရဲ့ ၃ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <div class="story-title">💗 3 Month Anni (MayZin)</div>
+            <div class="story-text">(ဒီနေရာမှာ MayZin ရဲ့ ၃ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
             <button class="btn-close" onclick="closeStory('m_3month')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- Thuya 1 Month Anni -->
+    <div class="story-modal" id="t_1month">
+        <div class="story-card">
+            <div class="story-title">💖 1 Month Anni (Thuya)</div>
+            <div class="story-text">(ဒီနေရာမှာ Thuya ရဲ့ ၁ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('t_1month')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- Thuya 2 Month Anni -->
+    <div class="story-modal" id="t_2month">
+        <div class="story-card">
+            <div class="story-title">💕 2 Month Anni (Thuya)</div>
+            <div class="story-text">(ဒီနေရာမှာ Thuya ရဲ့ ၂ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('t_2month')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- Thuya 3 Month Anni -->
+    <div class="story-modal" id="t_3month">
+        <div class="story-card">
+            <div class="story-title">💗 3 Month Anni (Thuya)</div>
+            <div class="story-text">(ဒီနေရာမှာ Thuya ရဲ့ ၃ လပြည့် အမှတ်တရ စာသားလေးတွေကို နောက်မှ ထည့်သွင်းပေးပါမည်။)</div>
+            <button class="btn-close" onclick="closeStory('t_3month')">ပြန်ထွက်မည်</button>
         </div>
     </div>
 
