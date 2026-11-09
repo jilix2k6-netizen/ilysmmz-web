@@ -323,15 +323,15 @@
             background-color: #fff0f3;
         }
 
-        /* Birthday Cards Section */
-        .birthday-section-title {
+        /* Info Cards Section (မွေးနေ့နှင့် ကိုယ်ရေးအချက်အလက် ကဒ်များ) */
+        .info-section-title {
             font-size: 20px;
             color: #fff;
             margin: 25px 0 15px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        .birthday-grid {
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
@@ -339,7 +339,7 @@
             margin: 0 auto 25px;
         }
 
-        .birthday-card {
+        .info-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -347,30 +347,24 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: transform 0.3s ease;
         }
 
-        .birthday-card:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .bday-icon {
-            font-size: 30px;
+        .info-icon {
+            font-size: 28px;
             margin-bottom: 8px;
         }
 
-        .bday-name {
-            font-size: 15px;
+        .info-name {
+            font-size: 16px;
             font-weight: bold;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .bday-date {
-            font-size: 12px;
+        .info-detail {
+            font-size: 13px;
             color: #fff5f6;
+            line-height: 1.5;
         }
 
         /* Anniversary Menu Style (နှစ်တန်းခွဲထားခြင်း) */
@@ -524,7 +518,7 @@
         }
 
         @media (max-width: 500px) {
-            .anni-dual-container, .birthday-grid {
+            .anni-dual-container, .info-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -560,9 +554,9 @@
     <section id="memories" class="gallery-section">
         <h2>Our Memories 💕</h2>
 
-        <!-- Anniversary Counter Box (ချစ်သက်တမ်း ရေတွက်စက်) -->
+        <!-- Anniversary Counter Box (ချစ်သက်တမ်း ရေတွက်စက် - 2026.8.4) -->
         <div class="counter-card">
-            <div class="counter-title">✨ Together Since ✨</div>
+            <div class="counter-title">✨ Together Since 2026.08.04 ✨</div>
             <div class="counter-grid">
                 <div class="counter-box">
                     <div class="counter-number" id="daysCount">0</div>
@@ -603,18 +597,18 @@
             </div>
         </div>
 
-        <!-- Birthday Cards Section (မွေးနေ့ ကဒ်များ) -->
-        <h3 class="birthday-section-title">🎂 Our Birthdays 🎂</h3>
-        <div class="birthday-grid">
-            <div class="birthday-card" onclick="openStory('bday_mayzin')">
-                <div class="bday-icon">🌸</div>
-                <div class="bday-name">MayZin's Birthday</div>
-                <div class="bday-date">မွေးနေ့ အမှတ်တရ စာလွှာ ဖတ်ရန်</div>
+        <!-- Info Cards Section (မွေးနေ့နှင့် ကိုယ်ရေးအချက်အလက် ကဒ်များ) -->
+        <h3 class="info-section-title">🎂 Birthday & Info Cards 🎂</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">🌸</div>
+                <div class="info-name">MayZin</div>
+                <div class="info-detail">Birthday: (ထည့်ရန်)<br>Our Sweetheart ✨</div>
             </div>
-            <div class="birthday-card" onclick="openStory('bday_thuya')">
-                <div class="bday-icon">🌿</div>
-                <div class="bday-name">Thuya's Birthday</div>
-                <div class="bday-date">မွေးနေ့ အမှတ်တရ စာလွှာ ဖတ်ရန်</div>
+            <div class="info-card">
+                <div class="info-icon">🌿</div>
+                <div class="info-name">Thuya</div>
+                <div class="info-detail">Birthday: (ထည့်ရန်)<br>My Everything 💕</div>
             </div>
         </div>
 
@@ -700,24 +694,6 @@
         </div>
     </div>
 
-    <!-- MayZin Birthday Modal -->
-    <div class="story-modal" id="bday_mayzin">
-        <div class="story-card">
-            <div class="story-title">🌸 MayZin's Birthday 🎉</div>
-            <div class="story-text">(ဒီနေရာမှာ MayZin ရဲ့ မွေးနေ့ အမှတ်တရ စာသားလေးတွေကို ထည့်သွင်းပေးပါ။)</div>
-            <button class="btn-close" onclick="closeStory('bday_mayzin')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
-    <!-- Thuya Birthday Modal -->
-    <div class="story-modal" id="bday_thuya">
-        <div class="story-card">
-            <div class="story-title">🌿 Thuya's Birthday 🎉</div>
-            <div class="story-text">(ဒီနေရာမှာ Thuya ရဲ့ မွေးနေ့ အမှတ်တရ စာသားလေးတွေကို ထည့်သွင်းပေးပါ။)</div>
-            <button class="btn-close" onclick="closeStory('bday_thuya')">ပြန်ထွက်မည်</button>
-        </div>
-    </div>
-
     <!-- MayZin 1 Month Anni -->
     <div class="story-modal" id="m_1month">
         <div class="story-card">
@@ -775,7 +751,7 @@
     <script>
         const correctPassword = "2684";
 
-        // 🌟 အစပြုခဲ့သည့် နေ့စွဲ (ဒီနေရာမှာ နှစ်ယောက်သား စတင်တွဲတဲ့ရက်ကို YYYY-MM-DD ပုံစံနဲ့ ပြောင်းထည့်နိုင်ပါတယ်)
+        // 🌟 တောင်းဆိုထားသည့်အတိုင်း စတင်တွဲသည့်ရက်ကို 2026.8.4 သို့ သတ်မှတ်ထားသည်
         const startDate = new Date("2026-08-04T00:00:00");
 
         function updateCounter() {
@@ -792,6 +768,11 @@
                 document.getElementById('hoursCount').innerText = hours;
                 document.getElementById('minsCount').innerText = mins;
                 document.getElementById('secsCount').innerText = secs;
+            } else {
+                document.getElementById('daysCount').innerText = 0;
+                document.getElementById('hoursCount').innerText = 0;
+                document.getElementById('minsCount').innerText = 0;
+                document.getElementById('secsCount').innerText = 0;
             }
         }
 
