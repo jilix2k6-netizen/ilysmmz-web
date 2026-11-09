@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sweetheart 💕</title>
+    <title>Tya & Mzh Memories</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,401 +13,388 @@
         }
 
         body {
-            background: linear-gradient(135deg, #a8edf7 0%, #5ac8fa 50%, #ff9a9e 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 8s ease infinite;
-            color: #333;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
+        }
+
+        /* ပင်မစာမျက်နှာ (Home Section) */
+        .hero-section {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            text-align: center;
+            padding: 20px;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 45px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 380px;
+            width: 100%;
         }
 
-        /* အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် Effect */
-        .hearts-bg {
+        .hero-card h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            font-weight: bold;
+        }
+
+        .hero-card p {
+            font-size: 15px;
+            color: #fff5f6;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* ဝင်ရန် ခလုတ် */
+        .btn-enter {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #ffffff;
+            color: #ff4757;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enter:hover {
+            background-color: #fff0f3;
+            transform: translateY(-2px);
+        }
+
+        /* Password Pop-up Box */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: -20px;
-            background: rgba(255, 255, 255, 0.7);
-            display: inline-block;
-            transform: rotate(-45deg);
-            animation: floatUp 6s infinite linear;
-            border-radius: 50% 50% 0 0;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -50%;
-            left: 0;
-        }
-
-        .heart::after {
-            top: 0;
-            left: 50%;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(-45deg) scale(0.6);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(-45deg) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* ပထမဆုံး Question Card အပေါ်ကနေ ကျလာခြင်း */
-        .postcard-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 30px 25px;
-            max-width: 360px;
-            width: 90%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            animation: slideDown 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-        }
-
-        @keyframes slideDown {
-            0% {
-                transform: translateY(-150vh);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Code ဖြင့် ဖန်တီးထားသော Stitch Sticker Animated Container */
-        .stitch-avatar-box {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 15px;
-            position: relative;
-            animation: floatStitch 3s ease-in-out infinite;
-        }
-
-        @keyframes floatStitch {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .question-text {
-            font-size: 18px;
-            color: #444;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .choice-container {
-            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            display: none;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            position: relative;
-            min-height: 80px;
+            z-index: 1000;
         }
 
-        .btn-yes {
-            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        .modal-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 25px;
+            border-radius: 25px;
+            text-align: center;
+            width: 85%;
+            max-width: 320px;
+            color: #333;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .modal-box h3 {
+            margin-bottom: 15px;
+            color: #ff4757;
+            font-size: 18px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ff7eb3;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            color: #333;
+        }
+
+        .btn-submit {
+            padding: 10px 25px;
+            background-color: #ff4757;
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             font-weight: bold;
-            padding: 10px 22px;
-            font-size: 15px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.4s ease, font-size 0.4s ease;
-            z-index: 2;
-        }
-
-        .btn-no {
-            background: #fff;
-            color: #ff4757;
-            border: 2px solid #ff4757;
-            border-radius: 25px;
-            font-weight: bold;
-            padding: 10px 18px;
             font-size: 14px;
             cursor: pointer;
-            position: relative;
-            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-            z-index: 1;
         }
 
-        /* အဆင့် ၂ - အပေါ်ကနေ ကျလာမည့် စာအိတ် ပုံစံ Box */
-        .envelope-wrapper {
+        .error-msg {
+            color: #ff4757;
+            font-size: 13px;
+            margin-top: 10px;
             display: none;
-            width: 100%;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 10;
+            font-weight: bold;
         }
 
-        .envelope-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 40px 30px;
-            max-width: 360px;
-            width: 90%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        /* Gallery Section */
+        .gallery-section {
+            display: none;
+            min-height: 100vh;
+            padding: 50px 20px;
             text-align: center;
-            border: 2px dashed #ff7eb3;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+        }
+
+        .gallery-section h2 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .photo-box {
+            height: 150px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 8px;
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ဖတ်ရန် ခလုတ်များ */
+        .btn-read {
+            display: inline-block;
+            margin: 4px auto 0;
+            padding: 6px 18px;
+            background-color: #ffffff;
+            color: #ff4757;
+            border: none;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
             cursor: pointer;
-            animation: slideDown 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-            transition: transform 0.3s ease;
+            transition: 0.2s;
         }
 
-        .envelope-card:hover {
-            transform: scale(1.03);
+        .btn-read:hover {
+            background-color: #fff0f3;
         }
 
-        .envelope-icon {
-            font-size: 70px;
-            margin-bottom: 15px;
-            animation: bounce 1.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .envelope-text {
-            font-size: 16px;
-            color: #ff4757;
-            font-weight: bold;
-            line-height: 1.5;
-        }
-
-        /* အဆင့် ၃ - စာအိတ်ကို နှိပ်မှ ပေါ်လာမည့် တောင်းပန်စာ Section */
-        .letter-section {
-            display: none;
+        /* ပုံတစ်ပုံချင်းစီအတွက် စာဖတ်ရန် Full Page Modal */
+        .story-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .letter-card {
-            background: rgba(255, 255, 255, 0.95);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px 20px;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            color: #333;
-            text-align: center;
-            border: 2px dashed #ff7eb3;
-            animation: fadeIn 0.8s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .letter-header {
-            font-size: 20px;
-            color: #ff4757;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .letter-body {
-            font-size: 14px;
-            color: #444;
-            line-height: 1.8;
-            text-align: justify;
-            white-space: pre-line;
-            background: #fff5f6;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            border-radius: 18px;
-            max-height: 65vh;
+            z-index: 2000;
             overflow-y: auto;
-            border: 1px solid #ffd1dc;
+        }
+
+        .story-card {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 20px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            color: #333;
+        }
+
+        .story-card img {
+            width: 100%;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .story-title {
+            font-size: 18px;
+            color: #ff4757;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .story-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .btn-close {
+            padding: 8px 25px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- အနောက်မှာ အသည်းပုံလေးများ ပျံဝဲမည့် အပိုင်း -->
-    <div class="hearts-bg" id="heartsBg"></div>
-
-    <!-- ပထမဆုံး အပေါ်ကနေ ကျလာမည့် Question Card -->
-    <div class="postcard-container" id="questionCard">
-        
-        <!-- Stitch Character holding "I'm Sorry" Sign Vector Graphic -->
-        <div class="stitch-avatar-box">
-            <svg viewBox="0 0 200 200" width="100%" height="100%">
-                <!-- Blue Stitch Body Base -->
-                <ellipse cx="100" cy="130" rx="45" ry="40" fill="#2979FF"/>
-                <!-- Stomach Light Patch -->
-                <ellipse cx="100" cy="135" rx="30" ry="25" fill="#90CAF9"/>
-                
-                <!-- Left Ear -->
-                <path d="M 65 90 C 20 40, 10 90, 55 105 Z" fill="#2979FF"/>
-                <path d="M 60 92 C 25 50, 18 90, 52 102 Z" fill="#FF80AB"/>
-                
-                <!-- Right Ear -->
-                <path d="M 135 90 C 180 40, 190 90, 145 105 Z" fill="#2979FF"/>
-                <path d="M 140 92 C 175 50, 182 90, 148 102 Z" fill="#FF80AB"/>
-                
-                <!-- Stitch Head -->
-                <ellipse cx="100" cy="90" rx="48" ry="38" fill="#2979FF"/>
-                <!-- Eye Patches -->
-                <ellipse cx="80" cy="85" rx="15" ry="18" fill="#1565C0" transform="rotate(-10 80 85)"/>
-                <ellipse cx="120" cy="85" rx="15" ry="18" fill="#1565C0" transform="rotate(10 120 85)"/>
-                <!-- Eyes -->
-                <circle cx="82" cy="85" r="7" fill="#000"/>
-                <circle cx="118" cy="85" r="7" fill="#000"/>
-                <circle cx="84" cy="82" r="2.5" fill="#FFF"/>
-                <circle cx="120" cy="82" r="2.5" fill="#FFF"/>
-                <!-- Nose -->
-                <ellipse cx="100" cy="95" rx="10" ry="6" fill="#0D47A1"/>
-                
-                <!-- Sad Mouth -->
-                <path d="M 90 108 Q 100 102 110 108" stroke="#0D47A1" stroke-width="3" fill="none" stroke-linecap="round"/>
-                
-                <!-- Stitch Hands holding Sign -->
-                <circle cx="60" cy="140" r="10" fill="#2979FF"/>
-                <circle cx="140" cy="140" r="10" fill="#2979FF"/>
-                
-                <!-- "I'm Sorry" Signboard (Animated Wiggle) -->
-                <g class="signboard">
-                    <rect x="35" y="140" width="130" height="45" rx="8" fill="#FFF" stroke="#FF4757" stroke-width="3"/>
-                    <text x="100" y="167" font-size="16" font-weight="bold" fill="#FF4757" text-anchor="middle">I'm Sorry 🥺</text>
-                </g>
-            </svg>
-        </div>
-
-        <div class="question-text">မောင်တို့တစ်ကနေ ပြန်စကြမလား?</div>
-        
-        <div class="choice-container">
-            <button id="yesBtn" class="btn-yes" onclick="showEnvelope()">❤️ Yes</button>
-            <button id="noBtn" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">❌ သေချာလို့လား?</button>
-        </div>
-    </div>
-
-    <!-- အဆင့် ၂ - Yes နှိပ်လိုက်ရင် အပေါ်ကနေ ကျလာမည့် စာအိတ် ပုံစံ Box -->
-    <div class="envelope-wrapper" id="envelopeWrapper">
-        <div class="envelope-card" onclick="openLetter()">
-            <div class="envelope-icon">💌</div>
-            <div class="envelope-text">မောင့်ဆီက စာလွှာလေး ရောက်ရှိလာပါပြီ... နှိပ်ပြီး ဖတ်ပေးပါနော် 🥺🩷</div>
-        </div>
-    </div>
-
-    <!-- အဆင့် ၃ - စာအိတ်ကို နှိပ်မှ ပေါ်လာမည့် တောင်းပန်စာ Section -->
-    <section id="letterSection" class="letter-section">
-        <div class="letter-card">
-            <div class="letter-header">💌 မောင့်ဆီက ရင်တွင်းစကားလေး 💌</div>
-            <div class="letter-body">မမရေ...
-မောင် အများကြီး တောင်းပန်ပါတယ်နော်။ ဒီတစ်ခါတော့ မောင် အရင်လို မဖြစ်အောင် ပိုပြီး ဂရုစိုက်ပေးပါမယ်၊ ပိုပြီးလည်း အလျှော့ပေးပါ့မယ်။ နောက်လည်း မဆိုးတော့ပါဘူးနော်...။ 
-
-ပြတ်လည်း မပြတ်နိုင်သလို၊ စိတ်ချင်းလည်း ဘယ်တော့မှ မဝေးချင်ပါဘူး။ မောင့်ကို နောက်ထပ် အခွင့်အရေးလေး တစ်ခါလောက် ထပ်ပေးပါနော်... 🥺🩷</div>
+    <!-- ပင်မစာမျက်နှာ -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-card">
+            <h1>🌸 Tya & Mzh Memories 🌸</h1>
+            <p>ကျွန်ုပ်တို့ရဲ့ ချစ်စရာ အမှတ်တရလေးများ စုစည်းရာနေရာ</p>
+            <button class="btn-enter" onclick="openModal()">ဝင်ရန်</button>
         </div>
     </section>
 
+    <!-- Password Modal -->
+    <div class="modal-overlay" id="passModal">
+        <div class="modal-box">
+            <h3>🔑 Passcode ထည့်ပါ</h3>
+            <input type="password" id="passInput" class="password-input" placeholder="Password ရိုက်ပါ">
+            <button class="btn-submit" onclick="checkPassword()">အတည်ပြုမည်</button>
+            <p class="error-msg" id="errorMsg">Password မှားယွင်းနေပါသည်။</p>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="memories" class="gallery-section">
+        <h2>Our Memories 💕</h2>
+        <div class="photo-grid">
+            
+            <!-- ပုံ ၁ (44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png) -->
+            <div class="photo-card">
+                <div class="photo-box">
+                    <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
+                </div>
+                <div class="photo-caption">MayZin 🌸</div>
+                <button class="btn-read" onclick="openStory('story1')">ဖတ်ရန် 📖</button>
+            </div>
+
+            <!-- ပုံ ၂ (isay.png) -->
+            <div class="photo-card">
+                <div class="photo-box">
+                    <img src="isay.png" alt="Thuya Memory">
+                </div>
+                <div class="photo-caption">Thuya 🌿</div>
+                <button class="btn-read" onclick="openStory('story2')">ဖတ်ရန် 📖</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <div class="story-modal" id="story1">
+        <div class="story-card">
+            <img src="44C9A16C-5CA4-4F8C-9274-EC54EACD1C3A.png" alt="MayZin Memory">
+            <div class="story-title">🌸 MayZin ရဲ့ အမှတ်တရ စာလွှာ</div>
+            <div class="story-text">
+                ဒီနေရာမှာ MayZin နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
+            </div>
+            <button class="btn-close" onclick="closeStory('story1')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
+    <!-- isay.png အတွက် စာဖတ်ရန် စာမျက်နှာ -->
+    <div class="story-modal" id="story2">
+        <div class="story-card">
+            <img src="isay.png" alt="Thuya Memory">
+            <div class="story-title">🌿 Thuya ရဲ့ အမှတ်တရ စာလွှာ</div>
+            <div class="story-text">
+                ဒီနေရာမှာ Thuya နဲ့ပတ်သက်တဲ့ ခံစားချက်၊ အမှတ်တရ စာလွှာလေးတွေကို စိတ်ကြိုက် ရေးသားနိုင်ပါတယ်။
+            </div>
+            <button class="btn-close" onclick="closeStory('story2')">ပြန်ထွက်မည်</button>
+        </div>
+    </div>
+
     <script>
-        let moveCount = 0;
-        const maxMoves = 10;
+        const correctPassword = "2684";
 
-        // အနောက်မှာ အသည်းပုံလေးများ အလိုလို ပေါ်လာစေရန်
-        function createHeart() {
-            const heartsBg = document.getElementById('heartsBg');
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            
-            const size = Math.random() * 15 + 10;
-            heart.style.width = size + 'px';
-            heart.style.height = size + 'px';
-            heart.style.left = Math.random() * 100 + 'vw';
-            
-            const duration = Math.random() * 3 + 4;
-            heart.style.animationDuration = duration + 's';
-            
-            heartsBg.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, duration * 1000);
-        }
-
-        setInterval(createHeart, 400);
-
-        // "သေချာလို့လား?" ခလုတ် Smooth အဖြစ်ဆုံး ပြေးပြီး သေးသွားစေရန်
-        function moveButton() {
-            moveCount++;
-            const noBtn = document.getElementById('noBtn');
-            const yesBtn = document.getElementById('yesBtn');
-
-            if (moveCount <= maxMoves) {
-                const randomX = (Math.random() - 0.5) * 180;
-                const randomY = (Math.random() - 0.5) * 120;
-                
-                const scale = Math.max(0.2, 1 - (moveCount * 0.08));
-                const opacity = Math.max(0.2, 1 - (moveCount * 0.08));
-                
-                noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
-                noBtn.style.opacity = opacity;
-                
-                const yesScale = 1 + (moveCount * 0.1);
-                yesBtn.style.transform = `scale(${yesScale})`;
-            } else {
-                noBtn.style.display = 'none';
-                yesBtn.style.transform = `scale(1.8)`;
+        function openModal() {
+            const modal = document.getElementById('passModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+            const errorMsg = document.getElementById('errorMsg');
+            if (errorMsg) {
+                errorMsg.style.display = 'none';
+            }
+            const passInput = document.getElementById('passInput');
+            if (passInput) {
+                passInput.value = '';
             }
         }
 
-        // "Yes" နှိပ်လျှင် စာအိတ် အပေါ်ကနေ ကျလာစေရန်
-        function showEnvelope() {
-            document.getElementById('questionCard').style.display = 'none';
-            document.getElementById('envelopeWrapper').style.display = 'flex';
+        function checkPassword() {
+            const passInput = document.getElementById('passInput');
+            if (!passInput) return;
+            const userPass = passInput.value;
+            
+            if (userPass === correctPassword) {
+                const passModal = document.getElementById('passModal');
+                if (passModal) passModal.style.display = 'none';
+                
+                const heroSection = document.getElementById('heroSection');
+                if (heroSection) heroSection.style.display = 'none';
+                
+                const memories = document.getElementById('memories');
+                if (memories) memories.style.display = 'block';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const errorMsg = document.getElementById('errorMsg');
+                if (errorMsg) errorMsg.style.display = 'block';
+            }
         }
 
-        // စာအိတ်ကို နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
-        function openLetter() {
-            document.getElementById('envelopeWrapper').style.display = 'none';
-            document.getElementById('letterSection').style.display = 'flex';
+        function openStory(id) {
+            const storyModal = document.getElementById(id);
+            if (storyModal) storyModal.style.display = 'flex';
+        }
+
+        function closeStory(id) {
+            const storyModal = document.getElementById(id);
+            if (storyModal) storyModal.style.display = 'none';
         }
     </script>
 
