@@ -84,7 +84,7 @@
             }
         }
 
-        /* စာအိတ်ကလေး အပေါ်ကနေ အောက်ကို ကျလာမည့် Drop-down Animation */
+        /* ပထမဆုံး Question Card အပေါ်ကနေ ကျလာခြင်း */
         .postcard-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -163,7 +163,54 @@
             z-index: 1;
         }
 
-        /* တောင်းပန်စာ လှလှလေး ပေါ်မည့် Section */
+        /* အဆင့် ၂ - အပေါ်ကနေ ကျလာမည့် စာအိတ် ပုံစံ Box */
+        .envelope-wrapper {
+            display: none;
+            width: 100%;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .envelope-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 360px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border: 2px dashed #ff7eb3;
+            cursor: pointer;
+            animation: slideDown 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-card:hover {
+            transform: scale(1.03);
+        }
+
+        .envelope-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .envelope-text {
+            font-size: 16px;
+            color: #ff4757;
+            font-weight: bold;
+        }
+
+        /* အဆင့် ၃ - စာအိတ်ကို နှိပ်မှ ပေါ်လာမည့် တောင်းပန်စာ Section */
         .letter-section {
             display: none;
             width: 100%;
@@ -222,18 +269,26 @@
 
     <!-- ပထမဆုံး အပေါ်ကနေ ကျလာမည့် Question Card -->
     <div class="postcard-container" id="questionCard">
-        <!-- I'm Sorry ဆိုင်းဘုတ်ကိုင်ထားသော Stitch ရုပ်ကလေး (GIF Animation) -->
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1MW1rdWZ3ZTBpeWtrNmlvOGp4MXlueWc3N3R1cHFvOWx1ZjN6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/135E47VEy6T6Cs/giphy.gif" alt="Stitch Sorry" class="cute-img">
+        <!-- သေချာပေါက် ပေါ်မည့် Stitch Sorry Sticker GIF -->
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2F3OXFvNHVvY3I2bW50Mmx0MXFubmpmdzB1NHN6ZXo1aDNrdG9zZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9n/135E47VEy6T6Cs/giphy.gif" alt="Stitch Sorry" class="cute-img">
         
         <div class="question-text">မောင်တို့တစ်ကနေ ပြန်စကြမလား?</div>
         
         <div class="choice-container">
-            <button id="yesBtn" class="btn-yes" onclick="acceptForgiveness()">❤️ Yes</button>
+            <button id="yesBtn" class="btn-yes" onclick="showEnvelope()">❤️ Yes</button>
             <button id="noBtn" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">❌ သေချာလို့လား?</button>
         </div>
     </div>
 
-    <!-- "Yes" နှိပ်လိုက်ရင် ပေါ်လာမည့် တောင်းပန်စာ Section -->
+    <!-- အဆင့် ၂ - Yes နှိပ်လိုက်ရင် အပေါ်ကနေ ကျလာမည့် စာအိတ် ပုံစံ Box -->
+    <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope-card" onclick="openLetter()">
+            <div class="envelope-icon">💌</div>
+            <div class="envelope-text">မောင့်ဆီက စာလွှာလေး ရောက်ရှိလာပါပြီ... နှိပ်ပြီး ဖတ်ပေးပါနော် 🥺🩷</div>
+        </div>
+    </div>
+
+    <!-- အဆင့် ၃ - စာအိတ်ကို နှိပ်မှ ပေါ်လာမည့် တောင်းပန်စာ Section -->
     <section id="letterSection" class="letter-section">
         <div class="letter-card">
             <div class="letter-header">💌 မောင့်ဆီက ရင်တွင်းစကားလေး 💌</div>
@@ -295,9 +350,15 @@
             }
         }
 
-        // "Yes" နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
-        function acceptForgiveness() {
+        // "Yes" နှိပ်လျှင် စာအိတ် အပေါ်ကနေ ကျလာစေရန်
+        function showEnvelope() {
             document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('envelopeWrapper').style.display = 'flex';
+        }
+
+        // စာအိတ်ကို နှိပ်လျှင် တောင်းပန်စာ ကဒ် ပေါ်လာစေရန်
+        function openLetter() {
+            document.getElementById('envelopeWrapper').style.display = 'none';
             document.getElementById('letterSection').style.display = 'flex';
         }
     </script>
